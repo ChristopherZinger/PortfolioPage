@@ -1,0 +1,17 @@
+
+
+OVERAL
+  animations
+  loading animations - snake
+  deploy
+
+MOBILE
+  menu icon and unfolding animation
+  elaborate horizontal sliding in skills section + scroll icon
+
+
+BIG
+
+
+OTHER
+deploy

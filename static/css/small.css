@@ -1,0 +1,12 @@
+@media (max-width: 400px) {
+
+  .project h3{
+    font-size: 30px;
+  },
+
+
+  @media (max-width: 768px) {
+    #hello-medium{display: none}
+    #hello-small {display: block}
+  }
+}

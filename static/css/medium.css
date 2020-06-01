@@ -1,0 +1,91 @@
+@media (min-width: 750px) and
+  (max-width: 1200px) and
+  (min-height: 400px){
+
+  footer{
+    height: calc(100vh - 50vw - 10vh);
+  }
+
+  footer h3{
+    font-size: 25px;
+  }
+
+  nav #menuicon{
+
+    margin: 25px 4.3% 25px 32px;
+  }
+
+
+  
+  .jumbotron p{
+    display: none;
+  }
+
+  .jumbotron h1{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    font-size: 40px;
+  }
+
+
+  .proj-wrapper,  .skillwrapper{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+
+
+  .project, .skill{
+    width: 50vw;
+    height: 50vw;
+  }
+
+  .proj-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .project h3{
+    margin-top: 55%;
+  }
+
+  .wrapper{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .wrapper-container{
+    margin-bottom: calc(100vh - 50vw - 10vh);
+  }
+
+  #frame{
+    position: absolute;
+    height: 50%;
+    width: 60%;
+    top: 25%;
+    left: 20%;
+    border: 10px solid #38393F;
+    box-sizing: border-box;
+    border-radius: 0;
+   }
+
+  #menuicon{
+    padding: 0;
+    margin: 20px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid yellow;
+    border-radius:  20px;
+    box-sizing: border-box;
+  }
+
+  #hello-small{display: none}
+  #hello-medium{display: block}
+}

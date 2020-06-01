@@ -1,0 +1,402 @@
+@font-face {
+  font-family: font;
+  src: url(font.otf);
+}
+
+:root {
+  --black: #232429;
+  --gray: #38393F;
+  --color: yellow;
+}
+
+*{
+  margin:0;
+  padding: 0;
+  color: white;
+  border: none;
+  font-family: font;
+  font-weight: 200;
+  box-sizing: border-box;
+}
+
+
+body{
+  background-color: var(--black);
+}
+
+nav{
+  position: absolute;
+}
+
+nav #menuicon{
+  z-index: 15;
+  position: fixed;
+  margin: 25px 8.5% 25px 32px;
+  width: 35px;
+  height: 35px;
+  border: 2px solid var(--color);
+  border-radius:  20px;
+  box-sizing: border-box;
+  right: 0px;
+  transition-duration: .8s;
+}
+
+footer{
+  position: fixed;
+  height: calc(100vh - 100vw - 10vh);
+  padding: 0 10% ;
+  bottom: 0px;
+  background-color: var(--black);
+  display: none;
+  width: 100%;
+}
+
+footer h1{
+  position: relative;
+  display: block;
+  top: 50%;
+  left: 0%;
+  font-size: 40px;
+  font-weight: bold;
+  transform: translateY(-50%);
+  opacity: 1;
+  transition-duration: .5s;
+}
+
+footer h3{
+  position: relative;
+  display: block;
+  font-size: 25px;
+  padding: 10px 0;
+  opacity:0;
+  transition-duration: .5s;
+  transform: translate(10px);
+}
+
+footer div{
+  position: relative;
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+footer .toggleContactBtn{
+  opacity: 0;
+  transform: translate(-10px,-50%);
+}
+
+footer .showInfo{
+  opacity: 1;
+  transform: translate(0px);
+}
+
+.center{
+  position: absolute;
+  /* height: 300px; */
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  vertical-align: center;
+}
+.card{
+  border: 1px solid var(--gray);
+}
+
+.hideContact{
+  opacity: 0;
+  transform: translate(0,-120%) scale(1,1);
+}
+
+.folding-menu{
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  left: 100%;
+  z-index: 15;
+  background-color: var(--black);
+  transition-duration: .5s;
+}
+
+.folding-menu-on{
+  left: 0;
+}
+
+.folding-menu ul{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  list-style: none;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.folding-menu ul li{
+  font-size: 20px;
+  margin: 40px 0;
+}
+
+
+.jumbotron{
+  position: fixed;
+  height:  90vh;
+  width: 100%;
+}
+
+.jumbotron h1, .jumbotron p{
+  position: relative;
+}
+
+.jumbotron h1{
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.jumbotron p{
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  top: 77%;
+  text-align: center;;
+}
+
+.moveNavIconUp{ transform: translateY(-70px);}
+
+.proj-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-list{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.section-opener{
+  width: 100vw;
+  height: 10vh;
+  text-align: center;
+}
+.section-opener h2{
+  position: relative;
+  font-size: 25px;
+  font-weight: bold;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.proj-wrapper{
+  width: 100vw;
+  /* height: content; */
+}
+.project, .skill{
+  position: relative;
+  width: 100vw;
+  height: 100vw;
+  box-sizing: border-box;
+}
+
+.project .animation{
+  position: relative;
+}
+.project h4{
+  position: relative;
+  top: 10%;
+  float: right;
+  right: 10%;
+  font-size: 20px;
+}
+.project h3{
+  position: relative;
+  margin-top: 55%;
+  left: 10%;
+  max-width: calc(70%);
+  /* min-height: 86px; */
+  font-size: 30px
+}
+
+.project p{
+  /* top: 40%; */
+  position: relative;
+  /* bottom: 50px; */
+  left: 10%;
+  max-width: 70%;
+  font-size: 12px;
+  word-break: break-all ;
+}
+
+.project .scroll-animation{
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+.project .links{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 90%;
+  left: 10%;
+  width: 80%;
+  font-size: 12px;
+
+}
+
+.project .links a{
+  text-decoration: underline;
+  /* display: inline-block; */
+  color: darkgray;
+  font-size: 15px;
+}
+
+.skill-wrapper{
+  display: block;
+}
+
+.skill{
+  position: relative;
+  padding: 10%;
+  flex: 0 0 auto;
+}
+.skill h3, .skill h4, .skill ul{
+  position: relative;
+}
+.skill h3{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.skill h4{
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.skill ul{
+  list-style: none;
+}
+
+.skill ul .listtitle{
+  font-weight: bold;
+  margin: 12px 0 7px 0;
+}
+
+.skill {
+  position: relative;
+  width: 100%;
+  bottom: 10%;
+}
+
+.scrollwrapper{
+  position: relative;
+  /* display: block; */
+  width: 300px;
+  left: 50%;
+  transform: translate(-50%);
+  height: 10px;
+  bottom: 70px;
+  border: 2px solid transparent;
+}
+
+.skill #rail{
+  position: absolute;
+  margin:auto;
+  bottom: 0px;
+  border: .2px solid gray;
+  height: 0px;
+  width: 150px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.skill #handler{
+  position: absolute;
+  display: block;
+  margin:auto;
+  bottom: 0px;
+  background-color: var(--color);
+  border-radius: 2px;
+  height: 4px;
+  width: 50px;
+  left: 50%;
+  transform: translate(-50%, 2px);
+}
+
+
+.wrapper{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.wrapper-container{
+  position: relative;
+  margin-top: 90vh;
+  margin-bottom: calc(100vh - 100vw - 10vh);
+  display: block;
+  background-color: var(--black);
+  z-index: 10;
+}
+
+#frame{
+  position: absolute;
+  height: 40%;
+  width: 60%;
+  top: 30%;
+  left: 20%;
+  border: 10px solid #38393F;
+  box-sizing: border-box;
+  border-radius: 400px 400px 0px 400px;
+ }
+
+#hello-medium{display: none}
+#hello-small {display: block}
+
+#scroll-wrapper{
+  position: absolute;
+  display: block;
+  width: 200px;
+  height: 10px;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+#indicator-wrapper{
+  position: relative;
+  height: 100%;
+  width:80%;
+  left:50%;
+  transform:translate(-50%);
+}
+#scroll-line{
+  position: relative;
+  height: 2px;
+  width:100%;
+  background-color: var(--gray);
+  top: 2px;
+}
+#indicator{
+  position: relative;
+  display: block;
+  height: 3px;
+  width: 20px;
+  left: 0%;
+  transform: translate(-50%);
+  background-color: var(--color);
+  border-radius: 20px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.skill-list::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+.skill-list {
+    -ms-overflow-style: none;
+}

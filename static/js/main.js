@@ -4,7 +4,7 @@ const data =
     {
       "id":1,
       "title": "Typing for fun",
-      "description": "here goes the description",
+      "description": "The project is a tool to practice typing skills. It generates a random letter, gives the player time to find it on the keyboard and type it. It takes advantage of concepts like encapsulation, arrow functions, IFFE or higher-order-functions",
       "animationSrc":"animations/animation.ai",
       "technologies":["Javascript","HTML","CSS"],
       "urlGit": "https://github.com/ChristopherZinger/Learn-Typing-Tool",
@@ -12,8 +12,8 @@ const data =
     },
     {
       "id":2,
-      "title": "future js project",
-      "description": "here goes the description",
+      "title": "Recipe app",
+      "description": "Recipe app is a single page application made with React.js that takes advantage of Tasty database and rapidapi.com to provide you with delicious ideas for your meal.",
       "animationSrc":"animations/animation.ai",
       "technologies":["React","Javascript","HTML","CSS"],
       "urlGit": "",
@@ -30,8 +30,8 @@ const data =
     },
     {
       "id":4,
-      "title": "Space Ship Game",
-      "description": "here goes the description",
+      "title": "Spaceship Game",
+      "description": "It is a variation of the iconic game Space Invaders. It takes advantage of OOP and concepts like lambda functions, list comprehension and data structures to create awesome game experience and animations!",
       "animationSrc":"animations/animation.ai",
       "technologies":["Python","Pygame"],
       "urlGit": "https://github.com/ChristopherZinger/SpaceShipGame",
@@ -40,28 +40,19 @@ const data =
     {
       "id":5,
       "title": "Performance Manager",
-      "description": "here goes the description",
+      "description": "This WIP is a tool  that runs in the background and monitors my keystrokes, mouse events and active software. Data is saved in SQLite database.",
       "animationSrc":"animations/animation.ai",
-      "technologies":["Python","Pandas","MatPlotLib"],
+      "technologies":["Python","Pandas","NumPy"],
       "urlGit": "https://github.com/ChristopherZinger/performance_monitor",
       "url": ""
     },
     {
       "id":6,
       "title": "Dijksta Shortest Path",
-      "description": "here goes the description",
+      "description": "It is a app coded entirely with Python and PyGame. It visualize how Dijkstra shortest path algorithm works. It allows user to choose start and end point on 2 dimension array and draw walls that path has to pass around",
       "animationSrc":"animations/animation.ai",
       "technologies":["Python","PyGame"],
       "urlGit": "https://github.com/ChristopherZinger/Dijkstra-Shortest-Path-Algorithm",
-      "url": ""
-    },
-    {
-      "id":7,
-      "title": "Volume controller",
-      "description": "here goes the description",
-      "animationSrc":"animations/animation.ai",
-      "technologies":["Arduino","Python"],
-      "urlGit": "https://github.com/ChristopherZinger/volume-controll-with-arduino",
       "url": ""
     }
   ],
@@ -92,7 +83,7 @@ const data =
             "all":[
               "Python",
               "Django",
-              "REST"
+              "REST API"
             ]
           },
           {

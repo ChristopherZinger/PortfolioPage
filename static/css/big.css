@@ -88,11 +88,10 @@
 
   .project h3 span{
     display: inline-block;
-    transition-duration: .5s;
+    transition-duration: .7s;
   }
 
-  .project h3:hover span{
-    display: inline-block;
+  .toggleTitleByLetter{
     transform: rotateY(90deg);
     opacity: 0;
   }
@@ -104,6 +103,29 @@
     font-size: 30px;
     left: 20%;
     top: 40%;
+    height:   40px;
+    overflow: hidden;
+      }
+
+  /* .project h4 span{
+    position: relative;
+    display: inline-block;
+    transition-duration: .5s;
+  }
+
+  .project h4 span.topPosition{
+    transform: translateY(-100%);
+  }
+
+  .project h4 span.bottomPosition{
+    transform: translateY(100%);
+    opacity: 0;
+  } */
+  .project h4 div.nr-wrapper {
+    transition-duration: 1s;
+  }
+  .project h4 div.nr-wrapper-top{
+    transform: translateY(-50%);
   }
 
   .project .links{
@@ -113,8 +135,11 @@
     left: 20%;
     width: 150px;
     top: calc(57% + 50px );
-  }
 
+  }
+  .project .links a{
+    transition-duration: 1s;
+  }
   .project p{
     position: relative;
     margin:0;
@@ -122,6 +147,11 @@
     left: 20%;
     top: calc(57% + 30px );
     width: 40%;
+    transition-duration: 1s;
+  }
+
+  .hidden{
+    opacity: 0;
   }
   .project p :first-child{
     display: none;

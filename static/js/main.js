@@ -48,7 +48,7 @@ const data =
     },
     {
       "id":6,
-      "title": "Dijksta Shortest Path",
+      "title": "Dijkstra Shortest Path",
       "description": "It is a app coded entirely with Python and PyGame. It visualize how Dijkstra shortest path algorithm works. It allows user to choose start and end point on 2 dimension array and draw walls that path has to pass around",
       "animationSrc":"animations/animation.ai",
       "technologies":["Python","PyGame"],
@@ -124,25 +124,32 @@ const data =
 // DOM SELECTORS ----------------------------------
 const myDOM = function(){
   const byID = query =>{
-    return document.getElementById(query)
+      return document.getElementById(query)
   }
   const byQuery = query=>{
-    return document.querySelector(query)
+      return document.querySelector(query)
   }
+
   return {
-    menuicon: byID('menuicon'),
-    wrappercontainer: byQuery('.wrapper-container'),
+    contactBtn: byID('contactBtn'),
+    getDescription: ()=>{return byQuery('.project p')},
+    getLinks:()=>{return Array.from(document
+      .querySelectorAll('.project .links a'))},
+    email: byID('email'),
+    footer: byQuery('footer'),
+    getTitle: ()=>{return byID('proj-title')} ,
+    getProjId: ()=>{return Array.from(
+      document.querySelectorAll('.nr-wrapper')//project h4 div
+    )},
     jumbotron: byQuery('.jumbotron'),
     jumbotronTitle: byQuery('.jumbotron h1'),
+    menuicon: byID('menuicon'),
+    menu: byQuery('.folding-menu'),
     projects: byQuery('.proj-list'),
     skills: byQuery('.skill-list'),
-    email: byID('email'),
-    whatsapp: byID('whatsapp'),
-    footer: byQuery('footer'),
     svgContainer: byID('svg-container'),
-    contactBtn: byID('contactBtn'),
-    menu: byQuery('.folding-menu'),
     skillScrollIndicator: byID('indicator'),
+    whatsapp: byID('whatsapp'),
     window:{
       isBig:()=>{
         return window.innerWidth >= 1200 ? true : false;
@@ -157,8 +164,8 @@ const myDOM = function(){
       isSmall: ()=>{
         return window.innerWidth <= 750 ? true : false;
       }
-    }
-
+    },
+    wrappercontainer: byQuery('.wrapper-container'),
   }
 }();// myDOM
 
@@ -166,23 +173,29 @@ const myDOM = function(){
 const ctrlDOM = function(){
   // get all technologies
   const stats = {
-    technologies:[],
-    projects:[],  }
-  // populate technologies list
-  data.projects.forEach((proj)=>{
-    proj.technologies.forEach((item) => {
-      stats.technologies.includes(item) ?
-          null : stats.technologies.push(item);
-    });
-  })
-  // populate projects list
-  data.projects.forEach((item) => {
-    stats.projects.push(item.title)
-  });
+    technologies: function(){
+        let list = [];
+        data.projects.forEach((proj)=>{
+          proj.technologies.forEach((item) => {
+            list.includes(item) ?
+                null : list.push(item);
+          });
+        })
+        return list
+      }(),
+    projects:function(){
+      let list = [];
+      data.projects.forEach((item) => {
+        list.push(item.title)
+      });
+      return list;
+    }(),
+    currProject : data.projects[0],
+  }
 
   // populate html in case of big screen
   const popBigScr = () =>{
-    const proj = data.projects[0]
+    const proj = stats.currProject;
     const techList = stats.technologies.reduce((acc, item)=>{
       const isActive = proj.technologies.includes(item) ? 'active-tech' : '';
        return  acc + '\n' + `<li class="${isActive ? isActive : ""}" id="tech-${item}">${item}</li>`
@@ -191,17 +204,14 @@ const ctrlDOM = function(){
       return acc + "\n" + `<li class="projItem" id="${item}">${item}</li>`
     },"")
 
-  // generate title
-  const title = Array.from(proj.title).reduce((acc, el)=>{
-    return acc + '<span>' + el + '</span>'
-  },'')
-
-  console.log(title);
-
+    // generate title
+    const titleHTML = ctrlDOM.generateTitle(proj.title,[]);
+    // generate id
+    const idHTML = ctrlDOM.generateId();
     projHTML = `
       <div class="project card">
-        <h4>${proj.id<10 ? "0"+ proj.id : proj.id}</h4>
-        <h3>${title}</h3>
+        <h4>${idHTML}</h4>
+        <h3 id="proj-title">${titleHTML}</h3>
         <p>${proj.description}</p>
         <div class="links">
           <a href='${proj.urlGit}' target='_blank'>github</a>
@@ -254,34 +264,7 @@ const ctrlDOM = function(){
     });
     myDOM.projects.innerHTML = projHTML.join('\n')
   }
-
   return{
-    populateProjects : ()=>{
-      window.innerWidth < 1200 ? popProjSmall() : popBigScr();
-    },
-    populateSkills : ()=>{
-      if(myDOM.window.isBig()){return}
-
-      elementHTML = myDOM.skills
-      let newHTML = data.skills.reduce((accSkill, skill,) => {
-          return accSkill + `
-          <div class="skill card">
-            <h4>${skill.type}</h4>
-              ${ skill.technologies.reduce((accTech, tech)=>{
-                return accTech +`<ul>
-                    <li class=\'listtitle\' style="color:var(--color)">${tech.type}</li>
-                    ${ tech.all.reduce((accTechItem, techItem)=>{
-                      return accTechItem + `
-                        <li>${techItem}</li>
-                      `
-                    },'')}
-                  </ul>\n`
-              },'')}
-          </div>
-          `
-        },'')
-        elementHTML.innerHTML =  newHTML;
-      },
     changeProject: (target)=>{
       // find project in data
       const project = data.projects
@@ -319,6 +302,100 @@ const ctrlDOM = function(){
         }
       }
     },
+    generateId: ()=>{
+      let id = stats.currProject.id;
+      id < 10 ? id = '0' + id : id.toString();
+      // `<span>${item}</span>`
+      return Array.from(id).reduce((acc, item)=>{
+        return acc+=  `
+        <div class='nr-wrapper' style="display:inline-block";>
+          <div>${item}</div>
+          <div>2</div>
+        </div>`
+      },"")
+    },
+    generateTitle: (title, classNameList)=>{
+      // generate string with all class names
+      const classList = classNameList.reduce((acc, item)=>{
+        return acc + ' '+item;
+      },"")
+      // generate html
+      return Array.from(title).reduce((acc, el)=>{
+        el === " " ? el = '&nbsp' : null;
+        return acc + `<span class="
+          ${classList}
+        ">` + el + '</span>'
+      },'')
+    },
+    getNextProject: ()=>{return stats.currProject},
+    populateProjects : ()=>{
+      window.innerWidth < 1200 ? popProjSmall() : popBigScr();
+    },
+    populateSkills : ()=>{
+      if(myDOM.window.isBig()){return}
+      elementHTML = myDOM.skills
+      let newHTML = data.skills.reduce((accSkill, skill,) => {
+          return accSkill + `
+          <div class="skill card">
+            <h4>${skill.type}</h4>
+              ${ skill.technologies.reduce((accTech, tech)=>{
+                return accTech +`<ul>
+                    <li class=\'listtitle\' style="color:var(--color)">${tech.type}</li>
+                    ${ tech.all.reduce((accTechItem, techItem)=>{
+                      return accTechItem + `
+                        <li>${techItem}</li>
+                      `
+                    },'')}
+                  </ul>\n`
+              },'')}
+          </div>
+          `
+        },'')
+        elementHTML.innerHTML =  newHTML;
+      },
+    setNextProject: (target)=>{
+      const project = data.projects
+          .find(el => {
+            return el.title === target.id ? true : false;
+        });
+      // update curr project
+      project ? stats.currProject = project : null;
+    },
+    updateDescription: (desc)=>{
+      myDOM.getDescription().innerHTML = desc;
+    },
+    updateTechTags : ()=> {
+      if(stats.currProject.technologies){
+        const techTags = stats.currProject.technologies;
+        myDOM.technologiesList.forEach(el=>{
+            const tech = el.innerHTML;
+            el.classList.remove('active-tech')
+            techTags.includes(tech)
+              ? el.classList.add('active-tech') : el.classList.remove('active-tech');
+        })
+      }
+    },
+    updateTitle: (classNameList)=>{
+      const titleHTML = ctrlDOM.generateTitle(stats.currProject.title, classNameList);
+      myDOM.getTitle().innerHTML = titleHTML;
+    },
+    updateId: ()=>{
+      const idHTML = ctrlDOM.generateId();
+      const idwrapper = document.querySelector('.nr-wrapper').parentNode;
+      idwrapper.innerHTML = idHTML;
+    },
+    updateLinks: (project)=>{
+      const links = myDOM.getLinks();
+      links[0].href = project.urlGit;
+      if(project.url){
+        links[1].style.display = 'inline-block';
+        links[1].href = project.url;
+      } else{
+        links[1].style.display = 'none';
+        links[1].href = '#'
+      }
+    }
+
   }
 }();
 
@@ -335,6 +412,86 @@ const animations = function() {
       }
       item = item.parentNode
     }
+  }
+  const animateTechTags = ()=>{
+    return new Promise(resolve=>{
+      myDOM.technologiesList.forEach((item, i) => {
+        setTimeout(()=>{
+          item.classList.toggle('technology-fade-out');
+          if(i+1==myDOM.technologiesList.length){
+            resolve();
+          }
+        },i*70)
+      })
+    })
+  }
+  const animateTitle = ()=>{
+    // https://stackoverflow.com/questions/9071573/is-there-a-simple-way-to-make-a-random-selection-from-an-array-in-javascript-or
+    function choose(choices) {
+      var index = Math.floor(Math.random() * choices.length);
+      return choices[index];
+    }
+    titleHTML = document.getElementById('proj-title');
+    const titleArr = Array.from(titleHTML.children);
+    return new Promise(resolve=>{
+      let myArr = [...titleArr]; // array to substract from
+      titleArr.reverse().forEach((item, i) => {
+        const randItem = choose(myArr); // choose random letter
+        myArr = myArr.filter((value)=>{return value !== randItem})// remove letter form array
+        setTimeout(()=>{
+          randItem.classList.toggle('toggleTitleByLetter')
+          if(i+1 === titleArr.length){
+            setTimeout(()=>{
+              resolve();
+            },500)
+          }
+        },i*50)
+      });
+    })
+  }
+  const animateId = (id)=>{
+    id <10 ? id = Array.from('0'+id) : id = Array.from(id.toString)
+    const idNodesList = myDOM.getProjId();
+    idNodesList.forEach((item, i) => {
+      new Promise(resolve=>{
+        Array.from(item.children)[1].innerHTML = id[i];
+        setTimeout(()=>{
+          item.classList.add('nr-wrapper-top')
+          if(i+1 === idNodesList.length ){
+            setTimeout(()=>{ resolve()}, 1000)
+          }
+        },300+(i*400))
+      }).then(()=>{
+        ctrlDOM.updateId();
+      })
+    });
+  }
+  const animateLinks = ()=>{
+    const fadeout =  (array)=>{
+      array.forEach((item, i) => {
+        setTimeout(()=>{
+          item.classList.toggle('hidden');
+        },i*500)
+      });
+    }
+    const links = myDOM.getLinks();
+    console.log(links);
+    fadeout(links);
+    setTimeout(()=>{
+      // update HTML
+      ctrlDOM.updateLinks(ctrlDOM.getNextProject());
+      setTimeout(()=>{fadeout(links);},1000)
+    },750);
+
+  }
+  const animateDescriptions = (proj)=>{
+    myDOM.getDescription().classList.toggle('hidden');
+    setTimeout(()=>{
+      ctrlDOM.updateDescription(proj.description)
+      setTimeout(()=>{
+        myDOM.getDescription().classList.toggle('hidden');
+      },700)
+    },750);
   }
 return {
     animateJumbotron: (offset)=>{
@@ -446,6 +603,24 @@ return {
         item = item.parentNode
       }
     },
+    renderNextProject:(project)=>{
+      // animate tech tags
+      animateTechTags().then(()=>{
+        ctrlDOM.updateTechTags();
+        animateTechTags();
+      });
+      // animate the title
+      animateTitle().then(()=>{
+        ctrlDOM.updateTitle(classNameList=['toggleTitleByLetter']);
+        animateTitle();
+      });
+      // animate id
+      animateId(project.id);
+      // animate Links
+      animateLinks();
+      // update description
+      animateDescriptions(project);
+    },
     toggleContact: (item)=>{
       if(item === "contactBtn"){
         myDOM.contactBtn.classList.add('toggleContactBtn')
@@ -480,21 +655,23 @@ return {
         state.oldOffset = newOffset;
         }
       },
-
   }
 }();
 
 
 // CONTROLLER ------------------------------------
 const controller = function(){
+
   const changeProject = (target)=>{
-    if(!Array.from(target.classList).includes("projItem")){return;}
-    animations.animateProjectChange()
-    .then(()=>{
-      ctrlDOM.changeProject(target).updateTech()
-      animations.animateProjectChange()
-    })
+    // check if click was on li of proj list
+    if(myDOM.window.isBig() && Array.from(target.classList).includes("projItem")){
+      ctrlDOM.setNextProject(target);
+      animations.renderNextProject(
+        ctrlDOM.getNextProject()
+      )
+    }
   }
+
   const setEventListeners = ()=>{
     //scroll
     document.addEventListener('scroll', ()=>{
@@ -505,16 +682,19 @@ const controller = function(){
       animations.animateJumbotronFrame(offset);
       // animations.animateCard(offset);
     })
-    // toogle contact info
+
     document.addEventListener('click', (e)=>{
-      animations.toggleContact.call(this, e.target.id )
-      animations.toggleMenu(e.target);
-      animations.jumpToSection(e.target);
-      changeProject(e.target);
+      if(myDOM.window.isBig()){
+        changeProject(e.target);
+      }else{
+        animations.toggleContact.call(this, e.target.id )
+        animations.toggleMenu(e.target);
+        animations.jumpToSection(e.target);
+      }
+
     })
     // react on window resize
     window.addEventListener('resize', ()=>{
-      scrSizeError();
       const offset = window.pageYOffset;
       animations.animateJumbotronFrame(offset);
     })
@@ -532,5 +712,6 @@ const controller = function(){
     }
   }
 }();
-
-controller.init();
+document.addEventListener("DOMContentLoaded", function(){
+  controller.init();
+});

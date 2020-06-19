@@ -121,7 +121,7 @@ const data =
     ]
 }
 
-// DOM SELECTORS -----------------------------------------------------------
+// DOM SELECTORS ----------------------------------
 const myDOM = function(){
   const byID = query =>{
     return document.getElementById(query)
@@ -143,10 +143,186 @@ const myDOM = function(){
     contactBtn: byID('contactBtn'),
     menu: byQuery('.folding-menu'),
     skillScrollIndicator: byID('indicator'),
+    window:{
+      isBig:()=>{
+        return window.innerWidth >= 1200 ? true : false;
+      },
+
+      isMedium: ()=>{
+        const vw = window.innerWidth;
+        if(vw<1200 && vs>750){ return true };
+        return false;
+      },
+
+      isSmall: ()=>{
+        return window.innerWidth <= 750 ? true : false;
+      }
+    }
+
   }
 }();// myDOM
 
-// ANIMATIONS -----------------------------------------------------------
+// DOM Controller --------------------------------
+const ctrlDOM = function(){
+  // get all technologies
+  const stats = {
+    technologies:[],
+    projects:[],  }
+  // populate technologies list
+  data.projects.forEach((proj)=>{
+    proj.technologies.forEach((item) => {
+      stats.technologies.includes(item) ?
+          null : stats.technologies.push(item);
+    });
+  })
+  // populate projects list
+  data.projects.forEach((item) => {
+    stats.projects.push(item.title)
+  });
+
+  // populate html in case of big screen
+  const popBigScr = () =>{
+    const proj = data.projects[0]
+    const techList = stats.technologies.reduce((acc, item)=>{
+      const isActive = proj.technologies.includes(item) ? 'active-tech' : '';
+       return  acc + '\n' + `<li class="${isActive ? isActive : ""}" id="tech-${item}">${item}</li>`
+    },"")
+    const projectList = stats.projects.reduce((acc, item)=>{
+      return acc + "\n" + `<li class="projItem" id="${item}">${item}</li>`
+    },"")
+
+  // generate title
+  const title = Array.from(proj.title).reduce((acc, el)=>{
+    return acc + '<span>' + el + '</span>'
+  },'')
+
+  console.log(title);
+
+    projHTML = `
+      <div class="project card">
+        <h4>${proj.id<10 ? "0"+ proj.id : proj.id}</h4>
+        <h3>${title}</h3>
+        <p>${proj.description}</p>
+        <div class="links">
+          <a href='${proj.urlGit}' target='_blank'>github</a>
+           ${ proj.url !== "" ?
+                "<a href='${proj.url}' target='_blank'>view project</a>" :
+                "<a href=''></a>"}
+        </div>
+      </div>
+      <div class="nav">
+        <a href="">about</a>
+      </div>
+      <div id="listOfTechnologies">
+        <ul class="technology-wrapper">
+          ${techList}
+        </ul>
+      </div>
+      <div id="listOfProjects">
+        <ul class="projList-wrapper">
+          ${projectList}
+        </ul>
+      </div>
+    `;
+    myDOM.projects.innerHTML = projHTML;
+    myDOM.technologiesList = document.querySelectorAll('.technology-wrapper li');
+  }
+  // populate projects in case of small list
+  const popProjSmall = ()=>{
+    let projHTML = [];
+    data.projects.forEach( proj => {
+      const technologies = proj.technologies.reduce((acc, item)=>{
+         return  acc + ' ' + item
+      })
+      projHTML.push( `
+      <div class="project card">
+        <h4>${proj.id<10 ? "0"+ proj.id : proj.id}</h4>
+        <h3>${proj.title}</h3>
+        <p style="color:yellow;
+          font-weight: bold; ${ document.body.clientWidth>1200 ? "display:none" : null}">
+        ${technologies}</p>
+        <p>${proj.description}</p>
+        <div class="animation"></div>
+        <div class="links">
+          <a href='${proj.urlGit}' target='_blank'>github</a>
+           ${ proj.url !== "" ?
+                "<a href='${proj.url}' target='_blank'>view project</a>" :
+                "<a href=''></a>"}
+        </div>
+      </div>
+      `)
+    });
+    myDOM.projects.innerHTML = projHTML.join('\n')
+  }
+
+  return{
+    populateProjects : ()=>{
+      window.innerWidth < 1200 ? popProjSmall() : popBigScr();
+    },
+    populateSkills : ()=>{
+      if(myDOM.window.isBig()){return}
+
+      elementHTML = myDOM.skills
+      let newHTML = data.skills.reduce((accSkill, skill,) => {
+          return accSkill + `
+          <div class="skill card">
+            <h4>${skill.type}</h4>
+              ${ skill.technologies.reduce((accTech, tech)=>{
+                return accTech +`<ul>
+                    <li class=\'listtitle\' style="color:var(--color)">${tech.type}</li>
+                    ${ tech.all.reduce((accTechItem, techItem)=>{
+                      return accTechItem + `
+                        <li>${techItem}</li>
+                      `
+                    },'')}
+                  </ul>\n`
+              },'')}
+          </div>
+          `
+        },'')
+        elementHTML.innerHTML =  newHTML;
+      },
+    changeProject: (target)=>{
+      // find project in data
+      const project = data.projects
+          .find(el => {
+            return el.title === target.id ? true : false;
+        });
+      // substitute html
+      if(project){
+        document.querySelector('.project h3')
+            .innerHTML = project.title;
+        document.querySelector('.project h4')
+            .innerHTML = project.id<10 ? "0" + project.id : project.id;
+        document.querySelector('.project p')
+            .innerHTML = project.description;
+        const links = Array.from(document
+          .querySelectorAll('.project .links a'));
+        links[0].href = project.urlGit;
+        if(project.url){
+          links[1].style.display = 'inline-block';
+          links[1].href = project.url;
+        } else{
+          links[1].style.display = 'none';
+          links[1].href = '#'
+        }
+
+        return{
+          updateTech: ()=>{
+            myDOM.technologiesList.forEach(el=>{
+                const tech = el.innerHTML;
+                el.classList.remove('active-tech')
+                project.technologies.includes(tech)
+                  ? el.classList.add('active-tech') : el.classList.remove('active-tech');
+            })
+          },
+        }
+      }
+    },
+  }
+}();
+
+// ANIMATIONS ------------------------------------
 const animations = function() {
   const state = {
     oldOffset : window.pageYOffset,
@@ -161,7 +337,6 @@ const animations = function() {
     }
   }
 return {
-
     animateJumbotron: (offset)=>{
       // animate jumbotron when scrolling down
       //on mobiel devices
@@ -187,42 +362,57 @@ return {
       }
     },
     animateJumbotronFrame:(offset)=>{
-      !offset ? offset = 0 : "";
+      const h = myDOM.svgContainer.clientHeight;
+      const w = myDOM.svgContainer.clientWidth;
+      const points = [
+        0,0,
+        w,0,
+        w,h,
+        0,h,
+        0,0
+      ]
 
-      let windXstatic= myDOM.jumbotron.clientWidth;
-      let windY = (parseInt(window.getComputedStyle(
-          myDOM.wrappercontainer).marginTop) - offset) ;
-      let windYstatic = myDOM.jumbotron.clientHeight;
-      const rel = [.20,.25] // margins  [topbottom, leftright] in %
-      let delta = 1;
-      offset/(windY) < 1 ? delta = (offset/windY)
-        : delta = 0
+      let svgProp = {
+        stroke: 10,
+      }
+      if(window.innerWidth>1200){
+        svgProp.stroke =15 ;
+      }
 
-      let points = [
-        [windXstatic*rel[0], windYstatic*rel[1]],
-        [windXstatic*(1-rel[0]), windYstatic*rel[1]],
-        [windXstatic*(1-rel[0]), windYstatic*(1-rel[1])],
-        [windXstatic*rel[0], windYstatic*(1-rel[1])],
-        [windXstatic*rel[0], windYstatic*rel[1]],
-      ];
-      let myFrameX = (points[1][0] - points[0][0]);
-      let myFrameY = (points[3][1] - points[0][1]);
-      const svgLength =
-        (myFrameX *2)
-        + (myFrameY *2)
-      //console.log('svg length delta: ', delta);
-      offset/(windYstatic/10) < 1 ? delta = offset/(windYstatic/10)
-        : delta = 1
 
       let svgHTML = `
-      <svg height="${windY>0 ? windY : 0}" width="${windXstatic}" style="position:absolute;">
+      <svg >
         <polyline points="${points}"
-        stroke-dasharray="${(myFrameX + myFrameY)*(1-delta)},${((myFrameX + myFrameY)*(delta))}"
-        stroke-dashoffset="-${(myFrameX/2)*delta}"
-        style="fill:none;stroke:#38393F;stroke-width:10" />
+        stroke-dasharray="10"
+        stroke-dashoffset="0"
+        style="fill:none;stroke:#38393F;stroke-width:${svgProp.stroke}" />
       </svg>
       `
       myDOM.svgContainer.innerHTML = svgHTML;
+    },
+    animateScrollIndicator: ()=>{
+        // additional parameter to adjust scroll
+        // behavior according to window width
+        let srcWidthParameter = window.innerWidth < 750 ? data.skills.length - 1 : .5 ;
+        // calculate width of skill container
+        let left = (myDOM.skills.scrollLeft /
+          ( srcWidthParameter * myDOM.skills.clientWidth))
+          * 100;
+        myDOM.skillScrollIndicator.style.left = left+ '%'
+    },
+    animateProjectChange: ()=>{
+      // animate Technologies
+      return new Promise(resolve=>{
+          myDOM.technologiesList.forEach((item, i) => {
+            setTimeout(()=>{
+              item.classList.toggle('technology-fade-out');
+              if(i+1===myDOM.technologiesList.length){
+                resolve();
+              }
+            },i*70)
+          })
+      })
+
     },
     hideFooter: (offset)=>{
       if(window.pageYOffset < window.innerHeight){
@@ -239,8 +429,7 @@ return {
         if(item.nodeName==="LI" && item.parentNode.id ==="menu-list"){
           toggleMenu(myDOM.menuicon);// fold side menu
           let section = item.getAttribute('data-goto');
-          console.log(myDOM[section]);
-          section !== "footer" ?
+            section !== "footer" ?
             setTimeout(()=>{
 
               myDOM[section]
@@ -248,7 +437,6 @@ return {
             },500)
             :
             setTimeout(()=>{
-
               document.body
               .scrollIntoView({ behavior: 'smooth', block:'end' })
             },500)
@@ -257,7 +445,6 @@ return {
         }
         item = item.parentNode
       }
-
     },
     toggleContact: (item)=>{
       if(item === "contactBtn"){
@@ -278,8 +465,6 @@ return {
                 item.classList.add('showInfo')
               },((i+1)*100))
             });
-
-
         },500)
       }
     },
@@ -295,23 +480,21 @@ return {
         state.oldOffset = newOffset;
         }
       },
-    animateScrollIndicator: ()=>{
 
-        // additional parameter to adjust scroll
-        // behavior according to window width
-        let srcWidthParameter = window.innerWidth < 750 ? data.skills.length - 1 : .5 ;
-        // calculate width of skill container
-        let left = (myDOM.skills.scrollLeft /
-          ( srcWidthParameter * myDOM.skills.clientWidth))
-          * 100;
-        myDOM.skillScrollIndicator.style.left = left+ '%'
-
-    }
   }
 }();
 
-// CONTROLLER ---------------------------------------------------
+
+// CONTROLLER ------------------------------------
 const controller = function(){
+  const changeProject = (target)=>{
+    if(!Array.from(target.classList).includes("projItem")){return;}
+    animations.animateProjectChange()
+    .then(()=>{
+      ctrlDOM.changeProject(target).updateTech()
+      animations.animateProjectChange()
+    })
+  }
   const setEventListeners = ()=>{
     //scroll
     document.addEventListener('scroll', ()=>{
@@ -320,7 +503,6 @@ const controller = function(){
       animations.animateJumbotron(offset);
       animations.hideFooter(offset); // prevent footer form being displayed on the top of the page
       animations.animateJumbotronFrame(offset);
-
       // animations.animateCard(offset);
     })
     // toogle contact info
@@ -328,6 +510,7 @@ const controller = function(){
       animations.toggleContact.call(this, e.target.id )
       animations.toggleMenu(e.target);
       animations.jumpToSection(e.target);
+      changeProject(e.target);
     })
     // react on window resize
     window.addEventListener('resize', ()=>{
@@ -340,79 +523,12 @@ const controller = function(){
     })
   }
 
-  const populateProjects = ()=>{
-    let projHTML = [];
-
-    data.projects.forEach( proj => {
-      const technologies = proj.technologies.reduce((acc, item)=>{
-         return  acc + ' ' + item
-      })
-      projHTML.push( `
-      <div class="project card">
-        <h4>${proj.id<10 ? "0"+ proj.id : proj.id}</h4>
-        <h3>${proj.title}</h3>
-        <p style="color:yellow; font-weight: bold;">${technologies}</p>
-        <p>${proj.description}</p>
-        <div class="animation"></div>
-        <div class="links">
-          <a href='${proj.urlGit}' target='_blank'>github</a>
-           ${ proj.url !== "" ?
-                "<a href='${proj.url}' target='_blank'>view project</a>" :
-                "<a href=''></a>"}
-        </div>
-      </div>
-      `)
-    });
-    myDOM.projects.innerHTML = projHTML.join('\n')
-    };
-
-  const populateSkills = ()=>{
-    elementHTML = myDOM.skills
-    let newHTML = data.skills.reduce((accSkill, skill,) => {
-        return accSkill + `
-        <div class="skill card">
-          <h4>${skill.type}</h4>
-            ${ skill.technologies.reduce((accTech, tech)=>{
-              return accTech +`<ul>
-                  <li class=\'listtitle\' style="color:var(--color)">${tech.type}</li>
-                  ${ tech.all.reduce((accTechItem, techItem)=>{
-                    return accTechItem + `
-                      <li>${techItem}</li>
-                    `
-                  },'')}
-                </ul>\n`
-            },'')}
-        </div>
-        `
-      },'')
-      elementHTML.innerHTML =  newHTML;
-    };
-  const scrSizeError = ()=>{
-    if(window.innerWidth>1199){
-      document.body.style.backgroundColor = 'var(--black)';
-      document.body.innerHTML = `
-        <div class="center">
-          <h1>
-            Sorry,
-          </h1>
-          <h4>
-            At the moment this page runs on smaller, mobile devices only.
-          </h4>
-        </div>
-        `;
-    }
-  }
   return {
     init: ()=>{
-      if(window.innerWidth<1199){
-        setEventListeners();
-        populateProjects();
-        populateSkills();
-        animations.animateJumbotronFrame();
-      }else{
-        scrSizeError();
-      }
-
+      setEventListeners();
+      ctrlDOM.populateProjects();
+      ctrlDOM.populateSkills();
+      animations.animateJumbotronFrame();
     }
   }
 }();

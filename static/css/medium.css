@@ -11,12 +11,11 @@
   }
 
   nav #menuicon{
-
     margin: 25px 4.3% 25px 32px;
   }
 
 
-  
+
   .jumbotron p{
     display: none;
   }
@@ -88,4 +87,13 @@
 
   #hello-small{display: none}
   #hello-medium{display: block}
+
+  #svg-container, svg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 50vh;
+    width: 50vh;
+    transform: translate(-50%, -50%);
+  }
 }

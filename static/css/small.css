@@ -5,6 +5,7 @@
   },
 
 
+
   @media (max-width: 768px) {
     #hello-medium{display: none}
     #hello-small {display: block}

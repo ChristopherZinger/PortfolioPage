@@ -1,3 +1,185 @@
-@media (min-width: 1201px) and (max-width: 1200px){
+@media (min-width: 1200px) {
+  *{
+    margin: 0px;
+    padding: 0px;
+  }
+
+  body{
+
+  }
+  .container, body, .wrapper {
+    position: relative;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .jumbotron h1, .jumbotron p, #hello-small, #hello-medium,
+  .folding-menu, footer, #menuicon, .section-opener,
+  #scroll-wrapper{
+    display: none;
+  }
+
+
+
+  .jumbotron{
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .jumbotron{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #listOfProjects{
+    position: fixed;
+    right: 10%;
+    top: 20%;
+  }
+
+  #listOfProjects ul li {
+    text-align: right;
+    list-style: none;
+    margin-bottom: 10px;
+    transition-duration: .3s;
+  }
+  #listOfProjects ul li:hover {
+    margin-right: 5px;
+  }
+
+  .nav{
+    position: fixed;
+    top: 5%;
+    right: 10%;
+    text-align: right;
+  }
+  .nav a{
+    text-decoration: none;
+  }
+
+  .project{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .project:not( :first-child ){
+    display: none;
+  }
+
+  .project h3{
+    position: absolute;
+    margin:0;
+    font-size: 50px;
+    left: 20%;
+    top: 57%;
+    transform: translateY(-100%);
+    font-weight: bold;
+    width: 60%;
+    clear: left;
+    transition-duration: .5s;
+  }
+
+  .project h3 span{
+    display: inline-block;
+    transition-duration: .5s;
+  }
+
+  .project h3:hover span{
+    display: inline-block;
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+
+  .project h4{
+    position: absolute;
+    float: left;
+    margin:0;
+    font-size: 30px;
+    left: 20%;
+    top: 40%;
+  }
+
+  .project .links{
+    position: relative;
+    margin:0;
+    font-size: 20px;
+    left: 20%;
+    width: 150px;
+    top: calc(57% + 50px );
+  }
+
+  .project p{
+    position: relative;
+    margin:0;
+    font-size: 20px;
+    left: 20%;
+    top: calc(57% + 30px );
+    width: 40%;
+  }
+  .project p :first-child{
+    display: none;
+  }
+
+  .project-list{
+    position: relative;
+  }
+
+  .proj-wrapper, .skill-wrapper, .wrapper-container{
+    margin: 0px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+
+  .skill-list{
+    position: absolute;
+  }
+
+  #svg-container, svg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 60vh;
+    width: 60vh;
+    transform: translate(-50%, -50%);
+  }
+
+  .active-tech{
+    color:yellow;
+  }
+
+  .technology-wrapper li{
+    display: inline-block;
+    margin-right: 20px;
+    transition-duration: .5s;
+  }
+
+  .technology-fade-out{
+    opacity: 0;
+    transform: scale(.5);
+  }
+
+  .technology-wrapper{
+    position: fixed;
+    bottom: 10%;
+    left: 10%;
+  }
+
+  /* svg{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 50%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+  } */
+
 
 }

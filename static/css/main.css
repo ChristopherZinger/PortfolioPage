@@ -342,6 +342,15 @@ footer .showInfo{
   z-index: 10;
 }
 
+#svg-container, svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 80vw;
+  width: 80vw;
+  transform: translate(-50%, -50%);
+}
+
 #frame{
   position: absolute;
   height: 40%;

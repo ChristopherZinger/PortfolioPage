@@ -671,7 +671,16 @@ const controller = function(){
       )
     }
   }
-
+  const createCustomPointer=()=>{
+    if(myDOM.window.isBig()){
+      const pointer = document.createElement('div');
+      pointer.classList.add('customPointer')
+      document.body.insertBefore(pointer,
+        document.querySelector('.container')
+      )
+      document.body.style.cursor = 'none';
+    }
+  }
   const setEventListeners = ()=>{
     //scroll
     document.addEventListener('scroll', ()=>{
@@ -682,7 +691,7 @@ const controller = function(){
       animations.animateJumbotronFrame(offset);
       // animations.animateCard(offset);
     })
-
+    //click
     document.addEventListener('click', (e)=>{
       if(myDOM.window.isBig()){
         changeProject(e.target);
@@ -691,20 +700,63 @@ const controller = function(){
         animations.toggleMenu(e.target);
         animations.jumpToSection(e.target);
       }
-
     })
     // react on window resize
     window.addEventListener('resize', ()=>{
       const offset = window.pageYOffset;
       animations.animateJumbotronFrame(offset);
     })
+    // mobile , horizontal scroll on skill div
     myDOM.skills.addEventListener('scroll', ()=>{
       animations.animateScrollIndicator();
+    })
+    // mouse move
+    document.addEventListener('mousemove', e =>{
+      const x = e.clientX;
+      const y = e.clientY;
+      const pointer = document.querySelector('.customPointer');
+      pointer.style.left = x + 'px';
+      pointer.style.top = y + 'px';
+
+
+
+      let target = e.target;
+      let resetColor = true;
+      let classNameList = Array.from(
+        pointer.classList
+      )
+      while(target.nodeName !== "BODY"){
+        if(target.nodeName === "LI"){
+          if(!classNameList.includes('customPointerFilter')){
+            pointer.classList.add('customPointerFilter')
+          }
+          if(classNameList.includes('customPointerNoFilter')){
+            pointer.classList.remove('customPointerNoFilter')
+          }
+          resetColor = false;
+          break;
+        }
+        target = target.parentNode;
+      }
+      if(resetColor){
+        // setTimeout(()=>{
+          if(classNameList.includes('customPointerFilter')){
+            pointer.classList.remove('customPointerFilter')
+          }
+          if(!classNameList.includes('customPointerNoFilter')){
+            pointer.classList.add('customPointerNoFilter')
+          }
+        // },500)
+      }
+
+
+
     })
   }
 
   return {
     init: ()=>{
+      createCustomPointer();
       setEventListeners();
       ctrlDOM.populateProjects();
       ctrlDOM.populateSkills();

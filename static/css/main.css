@@ -3,6 +3,20 @@
   src: url(font.otf);
 }
 
+*{
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+}
+.showInfo a {
+  -webkit-user-select: text;  /* Chrome all / Safari all */
+  -moz-user-select: text;     /* Firefox all */
+  -ms-user-select: text;      /* IE 10+ */
+  user-select: text;
+  z-index: 100
+}
+
 :root {
   --black: #232429;
   --gray: #38393F;

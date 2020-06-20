@@ -123,6 +123,10 @@ const data =
 
 // DOM SELECTORS ----------------------------------
 const myDOM = function(){
+  const stats = {
+    big : 1050,
+    medium:750,
+  }
   const byID = query =>{
       return document.getElementById(query)
   }
@@ -135,6 +139,7 @@ const myDOM = function(){
     getDescription: ()=>{return byQuery('.project p')},
     getLinks:()=>{return Array.from(document
       .querySelectorAll('.project .links a'))},
+    getPointer: ()=>{return byQuery('.customPointer')},
     email: byID('email'),
     footer: byQuery('footer'),
     getTitle: ()=>{return byID('proj-title')} ,
@@ -152,17 +157,17 @@ const myDOM = function(){
     whatsapp: byID('whatsapp'),
     window:{
       isBig:()=>{
-        return window.innerWidth >= 1200 ? true : false;
+        return window.innerWidth >= stats.big ? true : false;
       },
 
       isMedium: ()=>{
         const vw = window.innerWidth;
-        if(vw<1200 && vs>750){ return true };
+        if(vw<stats.big && vs>stats.medium){ return true };
         return false;
       },
 
       isSmall: ()=>{
-        return window.innerWidth <= 750 ? true : false;
+        return window.innerWidth <= stats.medium ? true : false;
       }
     },
     wrappercontainer: byQuery('.wrapper-container'),
@@ -221,7 +226,7 @@ const ctrlDOM = function(){
         </div>
       </div>
       <div class="nav">
-        <a href="">about</a>
+        <a href="about.html">about</a>
       </div>
       <div id="listOfTechnologies">
         <ul class="technology-wrapper">
@@ -249,7 +254,7 @@ const ctrlDOM = function(){
         <h4>${proj.id<10 ? "0"+ proj.id : proj.id}</h4>
         <h3>${proj.title}</h3>
         <p style="color:yellow;
-          font-weight: bold; ${ document.body.clientWidth>1200 ? "display:none" : null}">
+          font-weight: bold; ${ myDOM.window.isBig() ? "display:none" : null}">
         ${technologies}</p>
         <p>${proj.description}</p>
         <div class="animation"></div>
@@ -329,9 +334,10 @@ const ctrlDOM = function(){
     },
     getNextProject: ()=>{return stats.currProject},
     populateProjects : ()=>{
-      window.innerWidth < 1200 ? popProjSmall() : popBigScr();
+      !myDOM.window.isBig() ? popProjSmall() : popBigScr();
     },
     populateSkills : ()=>{
+      // poplates skills for mobile devices
       if(myDOM.window.isBig()){return}
       elementHTML = myDOM.skills
       let newHTML = data.skills.reduce((accSkill, skill,) => {
@@ -475,7 +481,6 @@ const animations = function() {
       });
     }
     const links = myDOM.getLinks();
-    console.log(links);
     fadeout(links);
     setTimeout(()=>{
       // update HTML
@@ -492,6 +497,15 @@ const animations = function() {
         myDOM.getDescription().classList.toggle('hidden');
       },700)
     },750);
+  }
+  const animateFrameInOut = ()=>{
+    const animationTime = 2000; // in miliseconds
+    document.querySelector('polyline')
+      .style.animation = `dash ${animationTime/1000}s linear forwards`;
+    setTimeout(()=>{
+      document.querySelector('polyline')
+          .style.animation = 'none';
+    },animationTime)
   }
 return {
     animateJumbotron: (offset)=>{
@@ -518,7 +532,7 @@ return {
         });
       }
     },
-    animateJumbotronFrame:(offset)=>{
+    animateJumbotronFrame:(offset=0, dashArray=0)=>{
       const h = myDOM.svgContainer.clientHeight;
       const w = myDOM.svgContainer.clientWidth;
       const points = [
@@ -532,17 +546,22 @@ return {
       let svgProp = {
         stroke: 10,
       }
-      if(window.innerWidth>1200){
+      if(myDOM.window.isBig()){
         svgProp.stroke =15 ;
       }
 
 
+      // stroke-dashoffset="${offset}"
       let svgHTML = `
-      <svg >
-        <polyline points="${points}"
-        stroke-dasharray="10"
-        stroke-dashoffset="0"
-        style="fill:none;stroke:#38393F;stroke-width:${svgProp.stroke}" />
+      <svg>
+        <polyline
+        points="${points}"
+        stroke-dasharray="${dashArray}"
+        style="fill:none;
+        stroke:#38393F;
+        stroke-width:${svgProp.stroke}
+
+        " />
       </svg>
       `
       myDOM.svgContainer.innerHTML = svgHTML;
@@ -620,6 +639,8 @@ return {
       animateLinks();
       // update description
       animateDescriptions(project);
+      // animate the frame
+      animateFrameInOut();
     },
     toggleContact: (item)=>{
       if(item === "contactBtn"){
@@ -632,7 +653,7 @@ return {
               <h3>
                 <a href="mailto:krzysztof.zinger@gmail.com">
                 krzysztof.zinger@gmail.com</a></h3>
-              <h3>(+48) 791555945</h3>
+              <h3><a>+31 621362826</a></h3>
             </div>
             `
             Array.from(footer.children[0].children).forEach((item, i) => {
@@ -678,7 +699,7 @@ const controller = function(){
       document.body.insertBefore(pointer,
         document.querySelector('.container')
       )
-      document.body.style.cursor = 'none';
+      //document.body.style.cursor = 'none';
     }
   }
   const setEventListeners = ()=>{
@@ -703,6 +724,15 @@ const controller = function(){
     })
     // react on window resize
     window.addEventListener('resize', ()=>{
+      if(myDOM.window.isBig()  ){
+        // populate main HTML for big screen
+
+        // create cusom pointer if not exists
+        myDOM.getPointer() ? null : createCustomPointer()
+      }
+      ctrlDOM.populateProjects();
+      ctrlDOM.populateSkills(); // populate skills
+
       const offset = window.pageYOffset;
       animations.animateJumbotronFrame(offset);
     })
@@ -712,45 +742,42 @@ const controller = function(){
     })
     // mouse move
     document.addEventListener('mousemove', e =>{
-      const x = e.clientX;
-      const y = e.clientY;
-      const pointer = document.querySelector('.customPointer');
-      pointer.style.left = x + 'px';
-      pointer.style.top = y + 'px';
+      if(myDOM.window.isBig()){
+        const x = e.clientX;
+        const y = e.clientY;
+        const pointer = document.querySelector('.customPointer');
+        pointer.style.left = x + 'px';
+        pointer.style.top = y + 'px';
 
-
-
-      let target = e.target;
-      let resetColor = true;
-      let classNameList = Array.from(
-        pointer.classList
-      )
-      while(target.nodeName !== "BODY"){
-        if(target.nodeName === "LI"){
-          if(!classNameList.includes('customPointerFilter')){
-            pointer.classList.add('customPointerFilter')
+        let target = e.target;
+        let resetColor = true;
+        let classNameList = Array.from(
+          pointer.classList
+        )
+        //change cursor style if mouse over LI element
+        while(target.nodeName !== "BODY"){
+          if(target.nodeName === "LI" || target.nodeName === "A"){
+            if(!classNameList.includes('customPointerFilter')){
+              pointer.classList.add('customPointerFilter')
+            }
+            if(classNameList.includes('customPointerNoFilter')){
+              pointer.classList.remove('customPointerNoFilter')
+            }
+            resetColor = false;
+            break;
           }
-          if(classNameList.includes('customPointerNoFilter')){
-            pointer.classList.remove('customPointerNoFilter')
-          }
-          resetColor = false;
-          break;
+          target = target.parentNode;
         }
-        target = target.parentNode;
+        // go back to previous curos scale
+        if(resetColor){
+            if(classNameList.includes('customPointerFilter')){
+              pointer.classList.remove('customPointerFilter')
+            }
+            if(!classNameList.includes('customPointerNoFilter')){
+              pointer.classList.add('customPointerNoFilter')
+            }
+        }
       }
-      if(resetColor){
-        // setTimeout(()=>{
-          if(classNameList.includes('customPointerFilter')){
-            pointer.classList.remove('customPointerFilter')
-          }
-          if(!classNameList.includes('customPointerNoFilter')){
-            pointer.classList.add('customPointerNoFilter')
-          }
-        // },500)
-      }
-
-
-
     })
   }
 

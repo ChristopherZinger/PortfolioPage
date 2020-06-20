@@ -2,11 +2,35 @@
   *{
     margin: 0px;
     padding: 0px;
+    cursor: none;
+
   }
 
-  body{
-    cursor: pointer;
+body{
+  cursor = none;
+}
+
+
+.project p{
+  word-break: keep-all;
+}
+
+polyline {
+  stroke-dasharray: 400%;
+  stroke-dashoffset: 0%;
+
+}
+
+@keyframes dash {
+  0%{
+    stroke-dashoffset: 0%;
   }
+
+   100%{
+      stroke-dashoffset: 800%;
+
+  }
+}
 
   .container, body, .wrapper {
     position: relative;
@@ -23,10 +47,7 @@
     border: 2px solid yellow;
     z-index: 0;
     transform-origin: center;
-    transform:
-      /* rotate(-45deg) */
-      translate(-5%, -5%);
-
+    transform:translate(-5%, -5%);
     transition-property:
       background-color,
       border-radius;
@@ -34,43 +55,30 @@
 
   }
   .customPointerNoFilter{
-    background-color:none; /*  var(--black); */
+    background-color:none;
     border: 2px solid yellow;
     z-index: 0;
     border-radius: 50%;
+    pointer-events: none;
   }
 
   .customPointerFilter{
-    background-color:white; /*  var(--black); */
+    background-color:white;
     border: none;
     z-index: 11;
+    width: 30px;
+    height: 30px;
     mix-blend-mode : difference;
     border-radius: 0% 50% 50% 50% ;
     pointer-events: none;
-    /* transform:
-      scaleY(.3); */
+
   }
-
-  /* .customPointer::before{
-    opacity: 1;
-    position: absolute;
-    content: '';
-    background-color: yellow;
-    width: 100%;
-    height: 200%;
-    display: block;
-    z-index: 0;
-    mix-blend-mode : difference;
-  } */
-
 
   .jumbotron h1, .jumbotron p, #hello-small, #hello-medium,
   .folding-menu, footer, #menuicon, .section-opener,
   #scroll-wrapper{
     display: none;
   }
-
-
 
   .jumbotron{
     display: block;
@@ -94,7 +102,7 @@
   #listOfProjects ul li {
     text-align: right;
     list-style: none;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     transition-duration: .3s;
   }
   #listOfProjects ul li:hover {
@@ -156,21 +164,6 @@
     height:   40px;
     overflow: hidden;
       }
-
-  /* .project h4 span{
-    position: relative;
-    display: inline-block;
-    transition-duration: .5s;
-  }
-
-  .project h4 span.topPosition{
-    transform: translateY(-100%);
-  }
-
-  .project h4 span.bottomPosition{
-    transform: translateY(100%);
-    opacity: 0;
-  } */
   .project h4 div.nr-wrapper {
     transition-duration: 1s;
   }
@@ -216,6 +209,10 @@
     position: relative;
     top: 0px;
     left: 0px;
+  }
+
+  .skill-wrapper{
+    display: none;
   }
 
   .skill-list{

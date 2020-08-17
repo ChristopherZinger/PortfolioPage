@@ -1,151 +1,164 @@
 const data =
 {
-  "projects":[
+  "projects": [
     {
-      "id":1,
+      "id": 1,
       "title": "Typing for fun",
       "description": "The project is a tool to practice typing skills. It generates a random letter, gives the player time to find it on the keyboard and type it. It takes advantage of concepts like encapsulation, arrow functions, IFFE or higher-order-functions",
-      "animationSrc":"animations/animation.ai",
-      "technologies":["Javascript","HTML","CSS"],
+      "animationSrc": "animations/animation.ai",
+      "technologies": ["Javascript", "HTML", "CSS"],
       "urlGit": "https://github.com/ChristopherZinger/Learn-Typing-Tool",
       "url": "https://typingforfun.netlify.app/"
     },
     {
-      "id":2,
+      "id": 2,
       "title": "Recipe app",
       "description": "Recipe app is a single page application made with React.js that takes advantage of Tasty database and rapidapi.com to provide you with delicious ideas for your meal.",
-      "animationSrc":"animations/animation.ai",
-      "technologies":["React","Javascript","HTML","CSS"],
-      "urlGit": "",
+      "animationSrc": "animations/animation.ai",
+      "technologies": ["React", "Javascript", "HTML", "CSS"],
+      "urlGit": "https://github.com/ChristopherZinger/Receipe-App",
       "url": ""
     },
     {
-      "id":3,
+      "id": 3,
       "title": "Portfolio website",
       "description": "here goes the description. here goes the descriptionhere goes the description. here goes the descriptionhere goes the description.here goes the description here goes the description. here goes the description",
-      "animationSrc":"animations/animation.ai",
-      "technologies":["Javascript","HTML","CSS"],
+      "animationSrc": "animations/animation.ai",
+      "technologies": ["Javascript", "HTML", "CSS"],
       "urlGit": "",
       "url": ""
     },
     {
-      "id":4,
+      "id": 4,
       "title": "Spaceship Game",
       "description": "It is a variation of the iconic game Space Invaders. It takes advantage of OOP and concepts like lambda functions, list comprehension and data structures to create awesome game experience and animations!",
-      "animationSrc":"animations/animation.ai",
-      "technologies":["Python","Pygame"],
+      "animationSrc": "animations/animation.ai",
+      "technologies": ["Python", "Pygame"],
       "urlGit": "https://github.com/ChristopherZinger/SpaceShipGame",
       "url": ""
     },
     {
-      "id":5,
+      "id": 5,
       "title": "Performance Manager",
       "description": "This WIP is a tool  that runs in the background and monitors my keystrokes, mouse events and active software. Data is saved in SQLite database.",
-      "animationSrc":"animations/animation.ai",
-      "technologies":["Python","Pandas","NumPy"],
+      "animationSrc": "animations/animation.ai",
+      "technologies": ["Python", "Pandas", "NumPy"],
       "urlGit": "https://github.com/ChristopherZinger/performance_monitor",
       "url": ""
     },
     {
-      "id":6,
+      "id": 6,
       "title": "Dijkstra Shortest Path",
       "description": "It is a app coded entirely with Python and PyGame. It visualize how Dijkstra shortest path algorithm works. It allows user to choose start and end point on 2 dimension array and draw walls that path has to pass around",
-      "animationSrc":"animations/animation.ai",
-      "technologies":["Python","PyGame"],
+      "animationSrc": "animations/animation.ai",
+      "technologies": ["Python", "PyGame"],
       "urlGit": "https://github.com/ChristopherZinger/Dijkstra-Shortest-Path-Algorithm",
+      "url": ""
+    },
+    {
+      "id": 7,
+      "title": "Architecture Quiz",
+      "description": "Quiz with question about architecture. This webapp is build with django. asynchronous calls are executed with JQuery",
+      "animationSrc": "animations/animation.ai",
+      "technologies": ["Python", "Javascript", "HTML", "CSS"],
+      "urlGit": "https://github.com/ChristopherZinger/Quiz",
       "url": ""
     }
   ],
-   "skills":[
-      {
-        "id":1,
-        "type": "Technologies",
-        "technologies":[
-          {
-            "type":"frontend",
-            "all":[
-              "Javascript",
-              "React",
-              "JQuery",
-              "HTML",
-              "Sass",
-              "CSS"
-            ]
-          }
-        ]
-      },
-      {
-        "id":2,
-        "type": "Technologies",
-        "technologies":[
-          {
-            "type":"Backend",
-            "all":[
-              "Python",
-              "Django",
-              "REST API"
-            ]
-          },
-          {
-            "type":"Libraries",
-            "all":[
-              "Pandas",
-              "NumPy",
-              "PyGame"
-            ]
-          }
-        ]
-      },
-      {
-        "id":2,
-        "type": "Software",
-        "technologies":[
-          {
-            "type":"Adobe",
-            "all":[
-              "Photoshop",
-              "Illustrator",
-              "InDesing"
-            ]
-          },
-          {
-            "type":"3d Software",
-            "all":[
-              "Rhinoceros 3D",
-              "3ds max",
-              "Sketchup"
-            ]
-          }
-        ]
-      }
-    ]
+  "skills": [
+    {
+      "id": 1,
+      "type": "Technologies",
+      "technologies": [
+        {
+          "type": "frontend",
+          "all": [
+            "Javascript",
+            "React",
+            "JQuery",
+            "HTML",
+            "Sass",
+            "CSS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "Technologies",
+      "technologies": [
+        {
+          "type": "Backend",
+          "all": [
+            "Python",
+            "Django",
+            "REST API"
+          ]
+        },
+        {
+          "type": "Libraries",
+          "all": [
+            "Pandas",
+            "NumPy",
+            "PyGame"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "Software",
+      "technologies": [
+        {
+          "type": "Adobe",
+          "all": [
+            "Photoshop",
+            "Illustrator",
+            "InDesing"
+          ]
+        },
+        {
+          "type": "3d Software",
+          "all": [
+            "Rhinoceros 3D",
+            "3ds max",
+            "Sketchup"
+          ]
+        }
+      ]
+    }
+  ]
 }
 
 // DOM SELECTORS ----------------------------------
-const myDOM = function(){
+const myDOM = function () {
   const stats = {
-    big : 1050,
-    medium:750,
+    big: 1050,
+    medium: 750,
   }
-  const byID = query =>{
-      return document.getElementById(query)
+  const byID = query => {
+    return document.getElementById(query)
   }
-  const byQuery = query=>{
-      return document.querySelector(query)
+  const byQuery = query => {
+    return document.querySelector(query)
   }
 
   return {
     contactBtn: byID('contactBtn'),
-    getDescription: ()=>{return byQuery('.project p')},
-    getLinks:()=>{return Array.from(document
-      .querySelectorAll('.project .links a'))},
-    getPointer: ()=>{return byQuery('.customPointer')},
+    getDescription: () => { return byQuery('.project p') },
+    getLinks: () => {
+      return Array.from(document
+        .querySelectorAll('.project .links a'))
+    },
+    getPointer: () => { return byQuery('.customPointer') },
     email: byID('email'),
     footer: byQuery('footer'),
-    getTitle: ()=>{return byID('proj-title')} ,
-    getProjId: ()=>{return Array.from(
-      document.querySelectorAll('.nr-wrapper')//project h4 div
-    )},
+    getTitle: () => { return byID('proj-title') },
+    getProjId: () => {
+      return Array.from(
+        document.querySelectorAll('.nr-wrapper')//project h4 div
+      )
+    },
     jumbotron: byQuery('.jumbotron'),
     jumbotronTitle: byQuery('.jumbotron h1'),
     menuicon: byID('menuicon'),
@@ -155,18 +168,18 @@ const myDOM = function(){
     svgContainer: byID('svg-container'),
     skillScrollIndicator: byID('indicator'),
     whatsapp: byID('whatsapp'),
-    window:{
-      isBig:()=>{
+    window: {
+      isBig: () => {
         return window.innerWidth >= stats.big ? true : false;
       },
 
-      isMedium: ()=>{
+      isMedium: () => {
         const vw = window.innerWidth;
-        if(vw<stats.big && vs>stats.medium){ return true };
+        if (vw < stats.big && vs > stats.medium) { return true };
         return false;
       },
 
-      isSmall: ()=>{
+      isSmall: () => {
         return window.innerWidth <= stats.medium ? true : false;
       }
     },
@@ -175,42 +188,42 @@ const myDOM = function(){
 }();// myDOM
 
 // DOM Controller --------------------------------
-const ctrlDOM = function(){
+const ctrlDOM = function () {
   // get all technologies
   const stats = {
-    technologies: function(){
-        let list = [];
-        data.projects.forEach((proj)=>{
-          proj.technologies.forEach((item) => {
-            list.includes(item) ?
-                null : list.push(item);
-          });
-        })
-        return list
-      }(),
-    projects:function(){
+    technologies: function () {
+      let list = [];
+      data.projects.forEach((proj) => {
+        proj.technologies.forEach((item) => {
+          list.includes(item) ?
+            null : list.push(item);
+        });
+      })
+      return list
+    }(),
+    projects: function () {
       let list = [];
       data.projects.forEach((item) => {
         list.push(item.title)
       });
       return list;
     }(),
-    currProject : data.projects[0],
+    currProject: data.projects[0],
   }
 
   // populate html in case of big screen
-  const popBigScr = () =>{
+  const popBigScr = () => {
     const proj = stats.currProject;
-    const techList = stats.technologies.reduce((acc, item)=>{
+    const techList = stats.technologies.reduce((acc, item) => {
       const isActive = proj.technologies.includes(item) ? 'active-tech' : '';
-       return  acc + '\n' + `<li class="${isActive ? isActive : ""}" id="tech-${item}">${item}</li>`
-    },"")
-    const projectList = stats.projects.reduce((acc, item)=>{
+      return acc + '\n' + `<li class="${isActive ? isActive : ""}" id="tech-${item}">${item}</li>`
+    }, "")
+    const projectList = stats.projects.reduce((acc, item) => {
       return acc + "\n" + `<li class="projItem" id="${item}">${item}</li>`
-    },"")
+    }, "")
 
     // generate title
-    const titleHTML = ctrlDOM.generateTitle(proj.title,[]);
+    const titleHTML = ctrlDOM.generateTitle(proj.title, []);
     // generate id
     const idHTML = ctrlDOM.generateId();
     projHTML = `
@@ -221,8 +234,8 @@ const ctrlDOM = function(){
         <div class="links">
           <a href='${proj.urlGit}' target='_blank'>github</a>
            ${ proj.url !== "" ?
-                "<a href='${proj.url}' target='_blank'>view project</a>" :
-                "<a href=''></a>"}
+        "<a href='${proj.url}' target='_blank'>view project</a>" :
+        "<a href=''></a>"}
         </div>
       </div>
       <div class="nav">
@@ -243,15 +256,15 @@ const ctrlDOM = function(){
     myDOM.technologiesList = document.querySelectorAll('.technology-wrapper li');
   }
   // populate projects in case of small list
-  const popProjSmall = ()=>{
+  const popProjSmall = () => {
     let projHTML = [];
-    data.projects.forEach( proj => {
-      const technologies = proj.technologies.reduce((acc, item)=>{
-         return  acc + ' ' + item
+    data.projects.forEach(proj => {
+      const technologies = proj.technologies.reduce((acc, item) => {
+        return acc + ' ' + item
       })
-      projHTML.push( `
+      projHTML.push(`
       <div class="project card">
-        <h4>${proj.id<10 ? "0"+ proj.id : proj.id}</h4>
+        <h4>${proj.id < 10 ? "0" + proj.id : proj.id}</h4>
         <h3>${proj.title}</h3>
         <p style="color:yellow;
           font-weight: bold; ${ myDOM.window.isBig() ? "display:none" : null}">
@@ -261,142 +274,142 @@ const ctrlDOM = function(){
         <div class="links">
           <a href='${proj.urlGit}' target='_blank'>github</a>
            ${ proj.url !== "" ?
-                "<a href='${proj.url}' target='_blank'>view project</a>" :
-                "<a href=''></a>"}
+          "<a href='${proj.url}' target='_blank'>view project</a>" :
+          "<a href=''></a>"}
         </div>
       </div>
       `)
     });
     myDOM.projects.innerHTML = projHTML.join('\n')
   }
-  return{
-    changeProject: (target)=>{
+  return {
+    changeProject: (target) => {
       // find project in data
       const project = data.projects
-          .find(el => {
-            return el.title === target.id ? true : false;
+        .find(el => {
+          return el.title === target.id ? true : false;
         });
       // substitute html
-      if(project){
+      if (project) {
         document.querySelector('.project h3')
-            .innerHTML = project.title;
+          .innerHTML = project.title;
         document.querySelector('.project h4')
-            .innerHTML = project.id<10 ? "0" + project.id : project.id;
+          .innerHTML = project.id < 10 ? "0" + project.id : project.id;
         document.querySelector('.project p')
-            .innerHTML = project.description;
+          .innerHTML = project.description;
         const links = Array.from(document
           .querySelectorAll('.project .links a'));
         links[0].href = project.urlGit;
-        if(project.url){
+        if (project.url) {
           links[1].style.display = 'inline-block';
           links[1].href = project.url;
-        } else{
+        } else {
           links[1].style.display = 'none';
           links[1].href = '#'
         }
 
-        return{
-          updateTech: ()=>{
-            myDOM.technologiesList.forEach(el=>{
-                const tech = el.innerHTML;
-                el.classList.remove('active-tech')
-                project.technologies.includes(tech)
-                  ? el.classList.add('active-tech') : el.classList.remove('active-tech');
+        return {
+          updateTech: () => {
+            myDOM.technologiesList.forEach(el => {
+              const tech = el.innerHTML;
+              el.classList.remove('active-tech')
+              project.technologies.includes(tech)
+                ? el.classList.add('active-tech') : el.classList.remove('active-tech');
             })
           },
         }
       }
     },
-    generateId: ()=>{
+    generateId: () => {
       let id = stats.currProject.id;
       id < 10 ? id = '0' + id : id.toString();
       // `<span>${item}</span>`
-      return Array.from(id).reduce((acc, item)=>{
-        return acc+=  `
+      return Array.from(id).reduce((acc, item) => {
+        return acc += `
         <div class='nr-wrapper' style="display:inline-block";>
           <div>${item}</div>
           <div>2</div>
         </div>`
-      },"")
+      }, "")
     },
-    generateTitle: (title, classNameList)=>{
+    generateTitle: (title, classNameList) => {
       // generate string with all class names
-      const classList = classNameList.reduce((acc, item)=>{
-        return acc + ' '+item;
-      },"")
+      const classList = classNameList.reduce((acc, item) => {
+        return acc + ' ' + item;
+      }, "")
       // generate html
-      return Array.from(title).reduce((acc, el)=>{
+      return Array.from(title).reduce((acc, el) => {
         el === " " ? el = '&nbsp' : null;
         return acc + `<span class="
           ${classList}
         ">` + el + '</span>'
-      },'')
+      }, '')
     },
-    getNextProject: ()=>{return stats.currProject},
-    populateProjects : ()=>{
+    getNextProject: () => { return stats.currProject },
+    populateProjects: () => {
       !myDOM.window.isBig() ? popProjSmall() : popBigScr();
     },
-    populateSkills : ()=>{
+    populateSkills: () => {
       // poplates skills for mobile devices
-      if(myDOM.window.isBig()){return}
+      if (myDOM.window.isBig()) { return }
       elementHTML = myDOM.skills
       let newHTML = data.skills.reduce((accSkill, skill,) => {
-          return accSkill + `
+        return accSkill + `
           <div class="skill card">
             <h4>${skill.type}</h4>
-              ${ skill.technologies.reduce((accTech, tech)=>{
-                return accTech +`<ul>
+              ${ skill.technologies.reduce((accTech, tech) => {
+          return accTech + `<ul>
                     <li class=\'listtitle\' style="color:var(--color)">${tech.type}</li>
-                    ${ tech.all.reduce((accTechItem, techItem)=>{
-                      return accTechItem + `
+                    ${ tech.all.reduce((accTechItem, techItem) => {
+            return accTechItem + `
                         <li>${techItem}</li>
                       `
-                    },'')}
+          }, '')}
                   </ul>\n`
-              },'')}
+        }, '')}
           </div>
           `
-        },'')
-        elementHTML.innerHTML =  newHTML;
-      },
-    setNextProject: (target)=>{
+      }, '')
+      elementHTML.innerHTML = newHTML;
+    },
+    setNextProject: (target) => {
       const project = data.projects
-          .find(el => {
-            return el.title === target.id ? true : false;
+        .find(el => {
+          return el.title === target.id ? true : false;
         });
       // update curr project
       project ? stats.currProject = project : null;
     },
-    updateDescription: (desc)=>{
+    updateDescription: (desc) => {
       myDOM.getDescription().innerHTML = desc;
     },
-    updateTechTags : ()=> {
-      if(stats.currProject.technologies){
+    updateTechTags: () => {
+      if (stats.currProject.technologies) {
         const techTags = stats.currProject.technologies;
-        myDOM.technologiesList.forEach(el=>{
-            const tech = el.innerHTML;
-            el.classList.remove('active-tech')
-            techTags.includes(tech)
-              ? el.classList.add('active-tech') : el.classList.remove('active-tech');
+        myDOM.technologiesList.forEach(el => {
+          const tech = el.innerHTML;
+          el.classList.remove('active-tech')
+          techTags.includes(tech)
+            ? el.classList.add('active-tech') : el.classList.remove('active-tech');
         })
       }
     },
-    updateTitle: (classNameList)=>{
+    updateTitle: (classNameList) => {
       const titleHTML = ctrlDOM.generateTitle(stats.currProject.title, classNameList);
       myDOM.getTitle().innerHTML = titleHTML;
     },
-    updateId: ()=>{
+    updateId: () => {
       const idHTML = ctrlDOM.generateId();
       const idwrapper = document.querySelector('.nr-wrapper').parentNode;
       idwrapper.innerHTML = idHTML;
     },
-    updateLinks: (project)=>{
+    updateLinks: (project) => {
       const links = myDOM.getLinks();
       links[0].href = project.urlGit;
-      if(project.url){
+      if (project.url) {
         links[1].style.display = 'inline-block';
         links[1].href = project.url;
-      } else{
+      } else {
         links[1].style.display = 'none';
         links[1].href = '#'
       }
@@ -406,32 +419,32 @@ const ctrlDOM = function(){
 }();
 
 // ANIMATIONS ------------------------------------
-const animations = function() {
+const animations = function () {
   const state = {
-    oldOffset : window.pageYOffset,
+    oldOffset: window.pageYOffset,
   }
-  const toggleMenu = (item)=>{
-    while(item.nodeName !== 'BODY'){
-      if(item == myDOM.menuicon){
+  const toggleMenu = (item) => {
+    while (item.nodeName !== 'BODY') {
+      if (item == myDOM.menuicon) {
         myDOM.menu.classList.toggle('folding-menu-on')
         break;
       }
       item = item.parentNode
     }
   }
-  const animateTechTags = ()=>{
-    return new Promise(resolve=>{
+  const animateTechTags = () => {
+    return new Promise(resolve => {
       myDOM.technologiesList.forEach((item, i) => {
-        setTimeout(()=>{
+        setTimeout(() => {
           item.classList.toggle('technology-fade-out');
-          if(i+1==myDOM.technologiesList.length){
+          if (i + 1 == myDOM.technologiesList.length) {
             resolve();
           }
-        },i*70)
+        }, i * 70)
       })
     })
   }
-  const animateTitle = ()=>{
+  const animateTitle = () => {
     // https://stackoverflow.com/questions/9071573/is-there-a-simple-way-to-make-a-random-selection-from-an-array-in-javascript-or
     function choose(choices) {
       var index = Math.floor(Math.random() * choices.length);
@@ -439,82 +452,82 @@ const animations = function() {
     }
     titleHTML = document.getElementById('proj-title');
     const titleArr = Array.from(titleHTML.children);
-    return new Promise(resolve=>{
+    return new Promise(resolve => {
       let myArr = [...titleArr]; // array to substract from
       titleArr.reverse().forEach((item, i) => {
         const randItem = choose(myArr); // choose random letter
-        myArr = myArr.filter((value)=>{return value !== randItem})// remove letter form array
-        setTimeout(()=>{
+        myArr = myArr.filter((value) => { return value !== randItem })// remove letter form array
+        setTimeout(() => {
           randItem.classList.toggle('toggleTitleByLetter')
-          if(i+1 === titleArr.length){
-            setTimeout(()=>{
+          if (i + 1 === titleArr.length) {
+            setTimeout(() => {
               resolve();
-            },500)
+            }, 500)
           }
-        },i*50)
+        }, i * 50)
       });
     })
   }
-  const animateId = (id)=>{
-    id <10 ? id = Array.from('0'+id) : id = Array.from(id.toString)
+  const animateId = (id) => {
+    id < 10 ? id = Array.from('0' + id) : id = Array.from(id.toString)
     const idNodesList = myDOM.getProjId();
     idNodesList.forEach((item, i) => {
-      new Promise(resolve=>{
+      new Promise(resolve => {
         Array.from(item.children)[1].innerHTML = id[i];
-        setTimeout(()=>{
+        setTimeout(() => {
           item.classList.add('nr-wrapper-top')
-          if(i+1 === idNodesList.length ){
-            setTimeout(()=>{ resolve()}, 1000)
+          if (i + 1 === idNodesList.length) {
+            setTimeout(() => { resolve() }, 1000)
           }
-        },300+(i*400))
-      }).then(()=>{
+        }, 300 + (i * 400))
+      }).then(() => {
         ctrlDOM.updateId();
       })
     });
   }
-  const animateLinks = ()=>{
-    const fadeout =  (array)=>{
+  const animateLinks = () => {
+    const fadeout = (array) => {
       array.forEach((item, i) => {
-        setTimeout(()=>{
+        setTimeout(() => {
           item.classList.toggle('hidden');
-        },i*500)
+        }, i * 500)
       });
     }
     const links = myDOM.getLinks();
     fadeout(links);
-    setTimeout(()=>{
+    setTimeout(() => {
       // update HTML
       ctrlDOM.updateLinks(ctrlDOM.getNextProject());
-      setTimeout(()=>{fadeout(links);},1000)
-    },750);
+      setTimeout(() => { fadeout(links); }, 1000)
+    }, 750);
 
   }
-  const animateDescriptions = (proj)=>{
+  const animateDescriptions = (proj) => {
     myDOM.getDescription().classList.toggle('hidden');
-    setTimeout(()=>{
+    setTimeout(() => {
       ctrlDOM.updateDescription(proj.description)
-      setTimeout(()=>{
+      setTimeout(() => {
         myDOM.getDescription().classList.toggle('hidden');
-      },700)
-    },750);
+      }, 700)
+    }, 750);
   }
-  const animateFrameInOut = ()=>{
+  const animateFrameInOut = () => {
     const animationTime = 2000; // in miliseconds
     document.querySelector('polyline')
-      .style.animation = `dash ${animationTime/1000}s linear forwards`;
-    setTimeout(()=>{
+      .style.animation = `dash ${animationTime / 1000}s linear forwards`;
+    setTimeout(() => {
       document.querySelector('polyline')
-          .style.animation = 'none';
-    },animationTime)
+        .style.animation = 'none';
+    }, animationTime)
   }
-return {
-    animateJumbotron: (offset)=>{
+  return {
+    animateJumbotron: (offset) => {
       // animate jumbotron when scrolling down
       //on mobiel devices
       const el = myDOM.wrappercontainer
       let jumbotronHeight = myDOM.jumbotron.clientHeight;
-      let delta = (100-offset)/100
-      if(offset < 200){
+      let delta = (100 - offset) / 100
+      if (offset < 200) {
         // animate margin on element below jumbotron
         let newMargin = delta * jumbotronHeight;
         newMargin >= 0 ?
@@ -522,32 +535,32 @@ return {
           : '';
 
       }
-      if(offset<100){
+      if (offset < 100) {
         // animate opacity of h1 in jumbotron
         Array.from(
           myDOM.jumbotron.children)
-          .forEach((item)=>{
-          item.id !== "svg-container" ?
-          item.style.opacity = `${Math.round((100-offset))/100}` : null
-        });
+          .forEach((item) => {
+            item.id !== "svg-container" ?
+              item.style.opacity = `${Math.round((100 - offset)) / 100}` : null
+          });
       }
     },
-    animateJumbotronFrame:(offset=0, dashArray=0)=>{
+    animateJumbotronFrame: (offset = 0, dashArray = 0) => {
       const h = myDOM.svgContainer.clientHeight;
       const w = myDOM.svgContainer.clientWidth;
       const points = [
-        0,0,
-        w,0,
-        w,h,
-        0,h,
-        0,0
+        0, 0,
+        w, 0,
+        w, h,
+        0, h,
+        0, 0
       ]
 
       let svgProp = {
         stroke: 10,
       }
-      if(myDOM.window.isBig()){
-        svgProp.stroke =15 ;
+      if (myDOM.window.isBig()) {
+        svgProp.stroke = 15;
       }
 
 
@@ -566,71 +579,71 @@ return {
       `
       myDOM.svgContainer.innerHTML = svgHTML;
     },
-    animateScrollIndicator: ()=>{
-        // additional parameter to adjust scroll
-        // behavior according to window width
-        let srcWidthParameter = window.innerWidth < 750 ? data.skills.length - 1 : .5 ;
-        // calculate width of skill container
-        let left = (myDOM.skills.scrollLeft /
-          ( srcWidthParameter * myDOM.skills.clientWidth))
-          * 100;
-        myDOM.skillScrollIndicator.style.left = left+ '%'
+    animateScrollIndicator: () => {
+      // additional parameter to adjust scroll
+      // behavior according to window width
+      let srcWidthParameter = window.innerWidth < 750 ? data.skills.length - 1 : .5;
+      // calculate width of skill container
+      let left = (myDOM.skills.scrollLeft /
+        (srcWidthParameter * myDOM.skills.clientWidth))
+        * 100;
+      myDOM.skillScrollIndicator.style.left = left + '%'
     },
-    animateProjectChange: ()=>{
+    animateProjectChange: () => {
       // animate Technologies
-      return new Promise(resolve=>{
-          myDOM.technologiesList.forEach((item, i) => {
-            setTimeout(()=>{
-              item.classList.toggle('technology-fade-out');
-              if(i+1===myDOM.technologiesList.length){
-                resolve();
-              }
-            },i*70)
-          })
+      return new Promise(resolve => {
+        myDOM.technologiesList.forEach((item, i) => {
+          setTimeout(() => {
+            item.classList.toggle('technology-fade-out');
+            if (i + 1 === myDOM.technologiesList.length) {
+              resolve();
+            }
+          }, i * 70)
+        })
       })
 
     },
-    hideFooter: (offset)=>{
-      if(window.pageYOffset < window.innerHeight){
+    hideFooter: (offset) => {
+      if (window.pageYOffset < window.innerHeight) {
         myDOM.jumbotron.style.display = "block";
         myDOM.footer.style.display = "none";
-      }else{
+      } else {
         myDOM.jumbotron.style.display = "none";
         myDOM.footer.style.display = "block";
       }
     },
-    jumpToSection: (item)=>{
+    jumpToSection: (item) => {
 
-      while(item.nodeName!=="BODY"){
-        if(item.nodeName==="LI" && item.parentNode.id ==="menu-list"){
+      while (item.nodeName !== "BODY") {
+        if (item.nodeName === "LI" && item.parentNode.id === "menu-list") {
           toggleMenu(myDOM.menuicon);// fold side menu
           let section = item.getAttribute('data-goto');
-            section !== "footer" ?
-            setTimeout(()=>{
+          section !== "footer" ?
+            setTimeout(() => {
 
               myDOM[section]
-              .scrollIntoView({ behavior: 'smooth' })
-            },500)
+                .scrollIntoView({ behavior: 'smooth' })
+            }, 500)
             :
-            setTimeout(()=>{
+            setTimeout(() => {
               document.body
-              .scrollIntoView({ behavior: 'smooth', block:'end' })
-            },500)
+                .scrollIntoView({ behavior: 'smooth', block: 'end' })
+            }, 500)
 
           break;
         }
         item = item.parentNode
       }
     },
-    renderNextProject:(project)=>{
+    renderNextProject: (project) => {
       // animate tech tags
-      animateTechTags().then(()=>{
+      animateTechTags().then(() => {
         ctrlDOM.updateTechTags();
         animateTechTags();
       });
       // animate the title
-      animateTitle().then(()=>{
-        ctrlDOM.updateTitle(classNameList=['toggleTitleByLetter']);
+      animateTitle().then(() => {
+        ctrlDOM.updateTitle(classNameList = ['toggleTitleByLetter']);
         animateTitle();
       });
       // animate id
@@ -642,12 +655,12 @@ return {
       // animate the frame
       animateFrameInOut();
     },
-    toggleContact: (item)=>{
-      if(item === "contactBtn"){
+    toggleContact: (item) => {
+      if (item === "contactBtn") {
         myDOM.contactBtn.classList.add('toggleContactBtn')
-        setTimeout(()=>{
+        setTimeout(() => {
           const footer = myDOM.contactBtn.parentNode
-            footer.innerHTML=
+          footer.innerHTML =
             `
             <div>
               <h3>
@@ -656,44 +669,44 @@ return {
               <h3><a>+31 621362826</a></h3>
             </div>
             `
-            Array.from(footer.children[0].children).forEach((item, i) => {
-              setTimeout(()=>{
-                item.classList.add('showInfo')
-              },((i+1)*100))
-            });
-        },500)
+          Array.from(footer.children[0].children).forEach((item, i) => {
+            setTimeout(() => {
+              item.classList.add('showInfo')
+            }, ((i + 1) * 100))
+          });
+        }, 500)
       }
     },
-    toggleMenu:toggleMenu,
-    toggleMenuIcon: (offset)=>{
+    toggleMenu: toggleMenu,
+    toggleMenuIcon: (offset) => {
       // Hide menu circle on scroll
       const newOffset = window.pageYOffset;
       let delta = state.oldOffset - newOffset;
-      if( Math.abs(delta) > 50 && newOffset > 300){
+      if (Math.abs(delta) > 50 && newOffset > 300) {
         delta < 0 ?
           myDOM.menuicon.classList.add('moveNavIconUp') :
           myDOM.menuicon.classList.remove('moveNavIconUp')
         state.oldOffset = newOffset;
-        }
-      },
+      }
+    },
   }
 }();
 
 
 // CONTROLLER ------------------------------------
-const controller = function(){
+const controller = function () {
 
-  const changeProject = (target)=>{
+  const changeProject = (target) => {
     // check if click was on li of proj list
-    if(myDOM.window.isBig() && Array.from(target.classList).includes("projItem")){
+    if (myDOM.window.isBig() && Array.from(target.classList).includes("projItem")) {
       ctrlDOM.setNextProject(target);
       animations.renderNextProject(
         ctrlDOM.getNextProject()
       )
     }
   }
-  const createCustomPointer=()=>{
-    if(myDOM.window.isBig()){
+  const createCustomPointer = () => {
+    if (myDOM.window.isBig()) {
       const pointer = document.createElement('div');
       pointer.classList.add('customPointer')
       document.body.insertBefore(pointer,
@@ -702,9 +715,9 @@ const controller = function(){
       //document.body.style.cursor = 'none';
     }
   }
-  const setEventListeners = ()=>{
+  const setEventListeners = () => {
     //scroll
-    document.addEventListener('scroll', ()=>{
+    document.addEventListener('scroll', () => {
       const offset = window.pageYOffset;
       animations.toggleMenuIcon(offset);
       animations.animateJumbotron(offset);
@@ -713,18 +726,18 @@ const controller = function(){
       // animations.animateCard(offset);
     })
     //click
-    document.addEventListener('click', (e)=>{
-      if(myDOM.window.isBig()){
+    document.addEventListener('click', (e) => {
+      if (myDOM.window.isBig()) {
         changeProject(e.target);
-      }else{
-        animations.toggleContact.call(this, e.target.id )
+      } else {
+        animations.toggleContact.call(this, e.target.id)
         animations.toggleMenu(e.target);
         animations.jumpToSection(e.target);
       }
     })
     // react on window resize
-    window.addEventListener('resize', ()=>{
-      if(myDOM.window.isBig()  ){
+    window.addEventListener('resize', () => {
+      if (myDOM.window.isBig()) {
         // populate main HTML for big screen
 
         // create cusom pointer if not exists
@@ -737,12 +750,12 @@ const controller = function(){
       animations.animateJumbotronFrame(offset);
     })
     // mobile , horizontal scroll on skill div
-    myDOM.skills.addEventListener('scroll', ()=>{
+    myDOM.skills.addEventListener('scroll', () => {
       animations.animateScrollIndicator();
     })
     // mouse move
-    document.addEventListener('mousemove', e =>{
-      if(myDOM.window.isBig()){
+    document.addEventListener('mousemove', e => {
+      if (myDOM.window.isBig()) {
         const x = e.clientX;
         const y = e.clientY;
         const pointer = document.querySelector('.customPointer');
@@ -755,12 +768,12 @@ const controller = function(){
           pointer.classList
         )
         //change cursor style if mouse over LI element
-        while(target.nodeName !== "BODY"){
-          if(target.nodeName === "LI" || target.nodeName === "A"){
-            if(!classNameList.includes('customPointerFilter')){
+        while (target.nodeName !== "BODY") {
+          if (target.nodeName === "LI" || target.nodeName === "A") {
+            if (!classNameList.includes('customPointerFilter')) {
               pointer.classList.add('customPointerFilter')
             }
-            if(classNameList.includes('customPointerNoFilter')){
+            if (classNameList.includes('customPointerNoFilter')) {
               pointer.classList.remove('customPointerNoFilter')
             }
             resetColor = false;
@@ -769,20 +782,20 @@ const controller = function(){
           target = target.parentNode;
         }
         // go back to previous curos scale
-        if(resetColor){
-            if(classNameList.includes('customPointerFilter')){
-              pointer.classList.remove('customPointerFilter')
-            }
-            if(!classNameList.includes('customPointerNoFilter')){
-              pointer.classList.add('customPointerNoFilter')
-            }
+        if (resetColor) {
+          if (classNameList.includes('customPointerFilter')) {
+            pointer.classList.remove('customPointerFilter')
+          }
+          if (!classNameList.includes('customPointerNoFilter')) {
+            pointer.classList.add('customPointerNoFilter')
+          }
         }
       }
     })
   }
 
   return {
-    init: ()=>{
+    init: () => {
       createCustomPointer();
       setEventListeners();
       ctrlDOM.populateProjects();
@@ -791,6 +804,6 @@ const controller = function(){
     }
   }
 }();
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
   controller.init();
 });

@@ -1,2 +1,7 @@
+![alt text][preview]
+[preview]: https://github.com/ChristopherZinger/PortfolioPage/tree/master/assetst/portfolio_app.gif "App preview"
+
+
 # PortfolioPage
-One page portfolio page made with vanilla js.
+Single page portfolio webapp made with vanilla js.
+

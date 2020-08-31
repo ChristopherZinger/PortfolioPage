@@ -16,7 +16,7 @@ const data =
       "description": "This single page application allows users to create accounts,  login and create multiple to-do lists. It uses node.js and express on the backend. Authorization and authentication is built with bcrypt and JWT. Frontend uses react.js and bootstrap.",
       "animationSrc": "animations/animation.ai",
       "technologies": ["Javascript", "HTML", "CSS", "React", "Node.js"],
-      "urlGit": "https://github.com/ChristopherZinger/Quiz",
+      "urlGit": "https://github.com/ChristopherZinger/to-do-app",
       "url": ""
     },
     {
@@ -25,7 +25,7 @@ const data =
       "description": "With this multi page application users can create a quiz by themselves or play with quizzes created by other users. It is built with node.js, express and Jquery.",
       "animationSrc": "animations/animation.ai",
       "technologies": ["Javascript", "HTML", "CSS", "Node.js"],
-      "urlGit": "https://github.com/ChristopherZinger/Quiz",
+      "urlGit": "https://github.com/ChristopherZinger/NodeJS-Quiz-Game-Creator",
       "url": ""
     },
     {

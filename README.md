@@ -1,4 +1,4 @@
-![alt text](https://github.com/ChristopherZinger/PortfolioPage/tree/master/assetst/portfolio_app.gif "App preview")
+![alt text](https://raw.githubusercontent.com/ChristopherZinger/PortfolioPage/master/assets/portfolio_app.gif "App preview")
 
 
 # PortfolioPage

@@ -12,6 +12,24 @@ const data =
     },
     {
       "id": 2,
+      "title": "To-do app",
+      "description": "This single page application allows users to create accounts,  login and create multiple to-do lists. It uses node.js and express on the backend. Authorization and authentication is built with bcrypt and JWT. Frontend uses react.js and bootstrap.",
+      "animationSrc": "animations/animation.ai",
+      "technologies": ["Javascript", "HTML", "CSS", "React", "Node.js"],
+      "urlGit": "https://github.com/ChristopherZinger/Quiz",
+      "url": ""
+    },
+    {
+      "id": 3,
+      "title": "Quiz creator",
+      "description": "With this multi page application users can create a quiz by themselves or play with quizzes created by other users. It is built with node.js, express and Jquery.",
+      "animationSrc": "animations/animation.ai",
+      "technologies": ["Javascript", "HTML", "CSS", "Node.js"],
+      "urlGit": "https://github.com/ChristopherZinger/Quiz",
+      "url": ""
+    },
+    {
+      "id": 4,
       "title": "Recipe app",
       "description": "Recipe app is a single page application made with React.js that takes advantage of Tasty database and rapidapi.com to provide you with delicious ideas for your meal.",
       "animationSrc": "animations/animation.ai",
@@ -20,7 +38,7 @@ const data =
       "url": ""
     },
     {
-      "id": 3,
+      "id": 5,
       "title": "Portfolio website",
       "description": "here goes the description. here goes the descriptionhere goes the description. here goes the descriptionhere goes the description.here goes the description here goes the description. here goes the description",
       "animationSrc": "animations/animation.ai",
@@ -29,7 +47,7 @@ const data =
       "url": ""
     },
     {
-      "id": 4,
+      "id": 6,
       "title": "Spaceship Game",
       "description": "It is a variation of the iconic game Space Invaders. It takes advantage of OOP and concepts like lambda functions, list comprehension and data structures to create awesome game experience and animations!",
       "animationSrc": "animations/animation.ai",
@@ -38,7 +56,7 @@ const data =
       "url": ""
     },
     {
-      "id": 5,
+      "id": 7,
       "title": "Performance Manager",
       "description": "This WIP is a tool  that runs in the background and monitors my keystrokes, mouse events and active software. Data is saved in SQLite database.",
       "animationSrc": "animations/animation.ai",
@@ -47,7 +65,7 @@ const data =
       "url": ""
     },
     {
-      "id": 6,
+      "id": 8,
       "title": "Dijkstra Shortest Path",
       "description": "It is a app coded entirely with Python and PyGame. It visualize how Dijkstra shortest path algorithm works. It allows user to choose start and end point on 2 dimension array and draw walls that path has to pass around",
       "animationSrc": "animations/animation.ai",
@@ -56,14 +74,14 @@ const data =
       "url": ""
     },
     {
-      "id": 7,
+      "id": 9,
       "title": "Architecture Quiz",
-      "description": "Quiz with question about architecture. This webapp is build with django. asynchronous calls are executed with JQuery",
+      "description": "Quiz with questions about architecture. This webapp is built with django. asynchronous calls are executed with JQuery",
       "animationSrc": "animations/animation.ai",
       "technologies": ["Python", "Javascript", "HTML", "CSS"],
       "urlGit": "https://github.com/ChristopherZinger/Quiz",
       "url": ""
-    }
+    },
   ],
   "skills": [
     {

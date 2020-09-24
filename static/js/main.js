@@ -40,7 +40,7 @@ const data =
     {
       "id": 5,
       "title": "Portfolio website",
-      "description": "here goes the description. here goes the descriptionhere goes the description. here goes the descriptionhere goes the description.here goes the description here goes the description. here goes the description",
+      "description": "This is my previous portfolio website. It is a static website created exclusively with CSS, JS and HTML, no framework needed. I designed and coded custom motions and animations in order to create unique user experience. I used this project to practice multiple js concepts and features like promises, DOM manipulation, iiffe, and more. ",
       "animationSrc": "animations/animation.ai",
       "technologies": ["Javascript", "HTML", "CSS"],
       "urlGit": "",
@@ -251,7 +251,7 @@ const ctrlDOM = function () {
         <p>${proj.description}</p>
         <div class="links">
           <a href='${proj.urlGit}' target='_blank'>github</a>
-           ${ proj.url !== "" ?
+           ${proj.url !== "" ?
         "<a href='${proj.url}' target='_blank'>view project</a>" :
         "<a href=''></a>"}
         </div>
@@ -285,13 +285,13 @@ const ctrlDOM = function () {
         <h4>${proj.id < 10 ? "0" + proj.id : proj.id}</h4>
         <h3>${proj.title}</h3>
         <p style="color:yellow;
-          font-weight: bold; ${ myDOM.window.isBig() ? "display:none" : null}">
+          font-weight: bold; ${myDOM.window.isBig() ? "display:none" : null}">
         ${technologies}</p>
         <p>${proj.description}</p>
         <div class="animation"></div>
         <div class="links">
           <a href='${proj.urlGit}' target='_blank'>github</a>
-           ${ proj.url !== "" ?
+           ${proj.url !== "" ?
           "<a href='${proj.url}' target='_blank'>view project</a>" :
           "<a href=''></a>"}
         </div>
@@ -375,10 +375,10 @@ const ctrlDOM = function () {
         return accSkill + `
           <div class="skill card">
             <h4>${skill.type}</h4>
-              ${ skill.technologies.reduce((accTech, tech) => {
+              ${skill.technologies.reduce((accTech, tech) => {
           return accTech + `<ul>
                     <li class=\'listtitle\' style="color:var(--color)">${tech.type}</li>
-                    ${ tech.all.reduce((accTechItem, techItem) => {
+                    ${tech.all.reduce((accTechItem, techItem) => {
             return accTechItem + `
                         <li>${techItem}</li>
                       `

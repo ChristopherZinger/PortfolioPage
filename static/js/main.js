@@ -257,7 +257,7 @@ const ctrlDOM = function () {
         </div>
       </div>
       <div class="nav">
-        <a href="about.html">about</a>
+        <a href="https://chris-web-dev.netlify.app/">about</a>
       </div>
       <div id="listOfTechnologies">
         <ul class="technology-wrapper">
